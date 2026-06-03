@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SonstigeErklaerungenUebermittlungResponse xmlns="https://finanzonline.bmf.gv.at/fon/ws/uebermittlungSonstigeErklaerungen" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Info_Daten>
+		<Fastnr_Fon_Tn>091234567</Fastnr_Fon_Tn>
+	</Info_Daten>
+	<MessageSpec>
+		<MessageRefId>20200211r</MessageRefId>
+		<EinbringungsTimestamp>2020-02-12T08:52:21.400464</EinbringungsTimestamp>
+		<Art>SOER</Art>
+		<Uebermittlung>P</Uebermittlung>
+		<Info>OK</Info>
+	</MessageSpec>
+</SonstigeErklaerungenUebermittlungResponse>

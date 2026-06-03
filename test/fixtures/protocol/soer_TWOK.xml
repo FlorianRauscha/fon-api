@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SonstigeErklaerungenUebermittlungResponse xmlns="https://finanzonline.bmf.gv.at/fon/ws/uebermittlungSonstigeErklaerungen" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Info_Daten>
+		<Fastnr_Fon_Tn>091234567</Fastnr_Fon_Tn>
+	</Info_Daten>
+	<MessageSpec>
+		<MessageRefId>20200211g</MessageRefId>
+		<EinbringungsTimestamp>2020-02-12T08:52:29.663289</EinbringungsTimestamp>
+		<Art>SOER</Art>
+		<Uebermittlung>P</Uebermittlung>
+		<Info>TWOK</Info>
+	</MessageSpec>
+	<SonstigeErklaerungenUebermittlungError>
+		<RefNr>Referenz008</RefNr>
+		<Error>
+			<Code>ERR-E-004</Code>
+			<Text>Die Sonstigen Erklärungen  (KOH1, WA1, KR1, ELA1, EGA1, ENAV1) können nicht für Zeiträume, die mehr als 7 Jahre zurückliegen abgegeben werden.</Text>
+		</Error>
+	</SonstigeErklaerungenUebermittlungError>
+	<SonstigeErklaerungenUebermittlungError>
+		<RefNr>Referenz007</RefNr>
+		<Error>
+			<Code>ERR-E-012</Code>
+			<Text>Eine Sonstige Erklärung ist pro Zeitraum und Steuerpflichtiger nur einmal möglich.</Text>
+		</Error>
+	</SonstigeErklaerungenUebermittlungError>
+</SonstigeErklaerungenUebermittlungResponse>

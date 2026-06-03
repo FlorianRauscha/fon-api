@@ -1,0 +1,1324 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="https://finanzonline.bmf.gv.at/fon/ws/abfrageDatenuebermittlung" xmlns:dbx="https://finanzonline.bmf.gv.at/fon/ws/abfrageDatenuebermittlung" elementFormDefault="qualified" targetNamespace="https://finanzonline.bmf.gv.at/fon/ws/abfrageDatenuebermittlung">
+	<xs:element name="abfrageDatenuebermittlungRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tid">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="12"/>
+							<xs:minLength value="8"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="benid">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="12"/>
+							<xs:minLength value="5"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="id">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:pattern value="[0-9A-Za-z]{10,24}"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element minOccurs="0" name="art" type="art_EnumType"/>
+				<xs:element name="fastnr">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="9"/>
+							<xs:minLength value="9"/>
+							<xs:pattern value="[0-9]{1,9}"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="zeitraum">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="4"/>
+							<xs:minLength value="4"/>
+							<xs:pattern value="[2-9]{1}[0-9]{3}"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="abfrageDatenuebermittlungResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="rc" type="xs:int"/>
+				<xs:element minOccurs="0" name="msg" type="xs:string"/>
+				<xs:element minOccurs="0" name="result">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element maxOccurs="unbounded" minOccurs="0" ref="l16"/>
+							<xs:element maxOccurs="unbounded" minOccurs="0" ref="l17"/>
+							<xs:element maxOccurs="unbounded" minOccurs="0" ref="meldung"/>
+							<xs:element maxOccurs="unbounded" minOccurs="0" ref="mitteilung109a"/>
+							<xs:element maxOccurs="unbounded" minOccurs="0" ref="sonderausgaben"/>
+							<xs:element maxOccurs="unbounded" minOccurs="0" ref="oekoSonderausgabenpauschale"/>
+							<xs:element maxOccurs="unbounded" minOccurs="0" ref="hochwasser"/>
+							<xs:element maxOccurs="unbounded" minOccurs="0" ref="ausserordentlicheGutschrift"/>
+							<xs:element maxOccurs="unbounded" minOccurs="0" ref="leitungsrechte"/>
+							<xs:element maxOccurs="unbounded" minOccurs="0" ref="pauschaleReiseaufwandsentschaedigungen"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="l16">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="grunddatenLz">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="jahr" type="maxStringLength4"/>
+							<xs:element name="zeitraumVon" type="maxStringLength2"/>
+							<xs:element name="zeitraumBis" type="maxStringLength2"/>
+							<xs:element name="artLohnzettel" type="maxStringLength2"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="grunddatenArbeitnehmer">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element minOccurs="0" name="vnrArbeitnehmer" type="maxStringLength11">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Sozialversicherungsnummer der Arbeitnehmerin/des Arbeitnehmers</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="geschlechtArbeitnehmer" type="geschlecht_EnumType">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Geschlecht</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="nameArbeitnehmer" type="maxStringLength37">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Name</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="titelArbeitnehmer" type="maxStringLength20">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Titel</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="plzArbeitnehmer" type="maxStringLength10">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Postleitzahl</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="ortArbeitnehmer" type="maxStringLength30">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Ort</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="adresseArbeitnehmer" type="maxStringLength37">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Adresse</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="sozialestellungwert" type="sozialestellungwert_EnumType">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Soziale Stellung</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="beschaeftigung" type="beschaeftigung_EnumType">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Beschäftigung</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="indAvabberuecksichtigt" type="xs:boolean">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Alleinverdienerabsetzbetrag</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="vnrEhepartner" type="maxStringLength11">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Sozialversicherungsnummer des (Ehe)Partners</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="indAeabberuecksichtigt" type="xs:boolean">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Alleinerzieherabsetzbetrag</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzAnzahlKinder" type="xs:long">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Anzahl der Kinder gemäß § 106 Abs. 1 EStG 1988</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element minOccurs="0" name="grunddatenArbeitgeber" type="grunddatenArbeitgeber"/>
+				<xs:element minOccurs="0" name="lzDaten">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element minOccurs="0" name="kz210" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Bruttobezüge gemäß § 25 (ohne § 26 und ohne Familienbeihilfe)</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kz215" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Steuerfreie Bezüge gemäß § 68</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kz220" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Bezüge gemäß § 67 Abs. 1 und 2 (innerhalb des Jahressechstels), vor Abzug der Sozialversicherungsbeiträge (SV-Beiträge)</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kz225" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Abzüglich einbehaltene SV-Beiträge für Bezüge gemäß Kennzahl 220</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kz226" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Abzüglich einbehaltene SV-Beiträge für Bezüge gemäß § 67 Abs. 3 bis 8, soweit mit festem Steuersatz versteuert</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kz230" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Summe SV-Beiträge</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kz240" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Landarbeiterfreibetrag gemäß § 104</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kz243" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Summe übrige Abzüge</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kz245" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Steuerpflichtige Bezüge</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kz260" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Anrechenbare Lohnsteuer</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzEinbehalteneSv" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Insgesamt einbehaltene SV-Beiträge, Kammerumlage, Wohnbauförderung</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzBezuegeAusland" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Auslandstätigkeit gemäß § 3 Abs. 1 Z 10 u. 11</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzPendlerPauschale" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Pendler-Pauschale gemäß § 16 Abs. 1 Z 6</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzGewerkschaftsBeitraege" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Einbehaltene freiwillige Beiträge gemäß § 16 Abs. 1 Z 3b</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzFestsatz" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Mit festen Sätzen versteuerte Bezüge gemäß § 67 Abs. 3 bis 8, vor Abzug der SV-Beiträge</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzSonstigebezuege" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Sonstige steuerfreie Bezüge</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzEinbehaltenelst" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Insgesamt einbehaltene Lohnsteuer</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzLfestSatz" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Abzüglich Lohnsteuer mit festen Sätzen gemäß § 67 Abs. 3 bis 8</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzSonstigebezuege67" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Sonstige Bezüge gemäß § 67 (2, 6, 10) laut Lohnsteuertarif versteuert</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzFreibetrag105" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Berücksichtigter Freibetrag gemäß § 105</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzFreibetrag63" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Freibetrag laut Mitteilung gemäß § 63</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzKircheOegb" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">berücksichtige Kirchenbeiträge, ÖGB-Beiträge</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzFreibetrag35" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Berücksichtigter Freibetrag gemäß § 35</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="KzNiErfBezuege25" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Nicht zu erfassende Bezüge gemäß § 25 Abs. 1 Z 2a u. 3a (75%)</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzPflegeVonMonat" type="xs:long">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Pflegegeldbezug von (MM)</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzPflegeBisMonat" type="xs:long">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Pflegegeldbezug bis (MM)</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzPflegegeld" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Bundespflegegeld</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzSteuerfreiBezuege26" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Steuerfreie Bezüge gemäß § 26</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+                            <xs:element minOccurs="0" name="kzMitarbeiterrabat" type="betrag">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="de">Mitarbeiterrabatte gemäß § 3 Abs. 1 Z 21</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+							<xs:element minOccurs="0" name="kzEntwicklungsHelferin" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Entwicklungshelfer/innen gemäß § 3 Abs. 1 Z 11 lit.b EStG</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzSteuerfrei31" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Pauschale Reiseaufwandsentschädigung gemäß § 3 Abs. 1 Z 16c</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzWerkverkehrMonate" type="xs:long">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Werkverkehr (§ 26 Z 5 EStG), Anzahl der Kalendermonate</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzBapBeitrag" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Arbeitgeberbeiträge an ausländische Pensionskassen</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzBmvBeitrag" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Eingezahlter Übertragungsbetrag an BV</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="pendlereuro" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Pendlereuro</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="sonderausgaben" type="monateDec">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Berücksichtigte Sonderausgaben gemäß § 18 Abs. 1 Z 7</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="ueberlassung" type="monateDec">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Überlassung arbeitgebereig. Kfz § 16 Abs. 1 Z 6 lit. B (Monate)</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="landAuslArbeitsstaette" type="maxStringLength3">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Länderkennung ausländische Arbeitsstätte</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="wkp_expatriates" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Werbungskostenpauschbetrag gemäß § 17 Abs. 1 für Expatriates</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="erhoehterVAB" type="xs:boolean">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">erhöhter VAB wurde berücksichtigt</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="faboPlus" type="xs:boolean">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Familienbonus Plus wurde berücksichtigt</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="faboPlusAnzKinder" type="maxNumLength2">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Anzahl der Kinder, für die ein Familienbonus Plus berücksichtigt wurde</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="faboPlusBetrag" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Höhe des Familienbonus Plus der tatsächlich steuermindernd gewirkt hat</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" minOccurs="0" name="faboL16Kind">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element minOccurs="0" name="nachnameKind" type="maxStringLength30">
+											<xs:annotation>
+												<xs:documentation xml:lang="de">Familien- oder Nachname</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element minOccurs="0" name="vornameKind" type="maxStringLength30">
+											<xs:annotation>
+												<xs:documentation xml:lang="de">Vorname</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element minOccurs="0" name="wohnsitzStaatKind" type="maxStringLength3">
+											<xs:annotation>
+												<xs:documentation xml:lang="de">Wohnsitzstaat zum 31.12.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element minOccurs="0" name="wohnsitzStaatwechsel" type="xs:boolean">
+											<xs:annotation>
+												<xs:documentation xml:lang="de">Wohnsitzstaat-Wechsel während des Jahres</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element minOccurs="0" name="svnrKind" type="maxStringLength10">
+											<xs:annotation>
+												<xs:documentation xml:lang="de">10-stellige Sozialversicherungsnummer laut e-card</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element minOccurs="0" name="vdatgebKind" type="xs:date">
+											<xs:annotation>
+												<xs:documentation xml:lang="de">Geburtsdatum</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element minOccurs="0" name="antragstellerFamilienhilfeBezieher" type="xs:boolean">
+											<xs:annotation>
+												<xs:documentation xml:lang="de">Familienbeihilfen-Bezieher</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element minOccurs="0" name="partnerFamilienhilfeBezieher" type="xs:boolean">
+											<xs:annotation>
+												<xs:documentation xml:lang="de">Partner des Familienbeihilfen-Beziehers</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element minOccurs="0" name="unterhaltszahlerFamilienhilfeBezieher" type="xs:boolean">
+											<xs:annotation>
+												<xs:documentation xml:lang="de">Unterhaltszahler</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element minOccurs="0" name="beginnGanzerFabo" type="maxStringLength2">
+											<xs:annotation>
+												<xs:documentation xml:lang="de">Der ganze Familienbonus Plus wurde berücksichtigt von (Monat)</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element minOccurs="0" name="endeGanzerFabo" type="maxStringLength2">
+											<xs:annotation>
+												<xs:documentation xml:lang="de">Der ganze Familienbonus Plus wurde berücksichtigt bis (Monat)</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element minOccurs="0" name="beginnHalberFabo" type="maxStringLength2">
+											<xs:annotation>
+												<xs:documentation xml:lang="de">Der halbe Familienbonus Plus wurde berücksichtigt von (Monat)</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element minOccurs="0" name="endeHalberFabo" type="maxStringLength2">
+											<xs:annotation>
+												<xs:documentation xml:lang="de">Der halbe Familienbonus Plus wurde berücksichtigt bis (Monat)</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element minOccurs="0" name="homeOfficeTage" type="tageInt">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Homeoffice-Tage</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="homeOfficePauschale" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Homeoffice-Pauschale</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="homeOfficeKostenuebernahme" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Kostenübernahme gemäß § 26 Z 5 lit. b</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="mitarbeiterGewinnbeteiligung" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Mitarbeitergewinnbeteiligung gemäß § 3 Abs. 1 Z 35 </xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="freiwilligerLohnsteuerabzug" type="xs:boolean">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Freiwilliger Lohnsteuerabzug gem.§ 47 Abs. 1 lit. b</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="ausserordentlicheEinmalzahlung" type="xs:boolean">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Außerordentliche Einmalzahlung nach § 772a ASVG, § 400a GSVG, § 394a BSVG, § 95h PG 1965 oder § 60 Abs. 19 BB-PG</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="teuerungspraemie" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Teuerungsprämie gemäß § 124b Z 408</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="mitarbeiterpraemieGem124B" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Mitarbeiterprämie gemäß § 124b Z 447</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="startupMitarbeitergewinnbeteiligungImAktuellenJahr" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Gewährung Start-Up-Mitarbeiterbeteiligung im Kalenderjahr in %</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="startupMitarbeitergewinnbeteiligungGesamtPer3112" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Gesamte Höhe der Beteiligung zum 31.12. in %</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="indZuflussNachPar67a" type="xs:boolean">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Zufluss nach § 67a Abs. 3</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="indBeendigungDienstverhaeltnisOhneZuflussNachPar67a" type="xs:boolean">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Beendigung Dienstverhältnis ohne Zufluss § 67a Abs. 3 Z 2</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="mitFestenSaetzenBesteuerteBezuegeGemPar67A" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Mit festen Sätzen versteuerte Bezüge gemäß § 67a Abs. 4 Z 2 </xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="indPauschaleLohnsteuerPar70Abs2" type="xs:boolean">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Pauschale Lohnsteuer § 70 Abs. 2 Z 2</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="kostenersatzEkfz" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Kostenersatz Aufladen E-Kfz/Anschaffung einer Ladeeirichtung</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="zuschussKinderbetreuung" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Zuschuss zur Kinderbetreuung § 3 Abs. 1 Z 12 lit. b</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="gebdat" type="xs:date">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Geburtsdatum</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="gebdatPartner" type="xs:date">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Geburtsdatum der*des Partners*in</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="anzahlKinderZKB" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Anzahl der Kinder mit Zuschuss zur Kinderbetreuung</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+                            <xs:element minOccurs="0" name="bruttobezuegeSachbezuegeKfz" type="betrag">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="de">Darin enthaltene Sachbezüge Kfz</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="bruttobezuegeSachbezuegeWohnraum" type="betrag">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="de">Darin enthaltene Sachbezüge Wohnraum</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="bruttobezuegeSachbezuegeSonstigeSachbezuege" type="betrag">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="de">Darin enthaltene sonstige Sachbezüge</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="steuerfreieBezuegePar68Abs1" type="betrag">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="de">Darin enthaltene Bezüge gem. § 68 Abs. 1</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="steuerfreieBezuegePar68Abs2" type="betrag">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="de">Darin enthaltene Bezüge gem. § 68 Abs. 2</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="beitraegeZukunfssicherung" type="betrag">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="de">Beiträge zur Zukunftssicherung gemäß § 3 Abs. 1 Z 15 lit. a</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="mitarbeiterkapitalbeteiligung" type="betrag">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="de">Mitarbeiterkapitalbeteiligung gemäß § 3 Abs. 1 Z 15 lit. b</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="mitarbeiterbeteiligungsstiftung" type="betrag">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="de">Mitarbeiterbeteiligungstiftung gemäß § 3 Abs. 1 Z 15 lit. c und d</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="zuschuesseCarsharing" type="betrag">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="de">Zuschüsse zu Carsharing gemäß § 3 Abs. 1 Z 16d</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="gutscheine" type="betrag">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="de">Gutscheine gemäß § 3 Abs. 1 Z 17 lit. b</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="indSachbezugKfz0" type="xs:boolean">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="de">Sachbezug Kfz 0%</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="indSachbezugKfz15" type="xs:boolean">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="de">Sachbezug Kfz 1,5%</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="indSachbezugKfz2" type="xs:boolean">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="de">Sachbezug Kfz 2%</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="indSachbezugKfzDurchschnittswert" type="xs:boolean">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="de">Sachbezug Kfz Durchschnittswert</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="anschaffungskostenKfz" type="betrag">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="de">Anschaffungskosten Kfz zum 31.12.</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="kostenersatzAufladenEKfz" type="betrag">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="de">Kostenersatz Aufladen E-Kfz</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="anschaffungLadeeinrichtung" type="betrag">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="de">Anschaffung einer Ladeeinrichtung</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="l17">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="grunddatenLz">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="jahr" type="maxStringLength4"/>
+							<xs:element name="zeitraumVon" type="maxStringLength2"/>
+							<xs:element name="zeitraumBis" type="maxStringLength2"/>
+							<xs:element name="artLohnzettel" type="maxStringLength2"/>
+							<xs:element minOccurs="0" name="waehrung" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="grunddatenArbeitnehmer">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element minOccurs="0" name="vnrArbeitnehmer" type="maxStringLength11">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Sozialversicherungsnummer der Arbeitnehmerin/des Arbeitnehmers</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="nameArbeitnehmer" type="maxStringLength37">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Name</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="titelArbeitnehmer" type="maxStringLength20">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Titel</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="plzArbeitnehmer" type="maxStringLength10">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Postleitzahl</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="ortArbeitnehmer" type="maxStringLength30">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Ort</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="adresseArbeitnehmer" type="maxStringLength37">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Adresse</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="indAuslPension" type="xs:boolean">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Pensionsbezug</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element minOccurs="0" name="grunddatenArbeitgeber" type="grunddatenArbeitgeber"/>
+				<xs:element minOccurs="0" name="lzDaten">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element minOccurs="0" name="kz350" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Bruttobezüge</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kz354" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Zulagen und Zuschläge</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kz394" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Sonn-, Feiertags-, Nachtarbeitzuschläge; Schmutz-, Erschwernis- u. Gefahrenzulage</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kz351" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Zuwendungen, neben Arbeitslohn nicht monatlich laufend gewährt</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kz352" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Abfertigungen und Abfindungen für die Dienstzeit</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzErfinderverg" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Erfindervergütungen/Prämien für Verbesserungsvorschläge</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kz356" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Pensionsabfindung Arbeitgeberin/Arbeitgeber</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kz738" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Pensionsabfindung Pensionskasse</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kz357" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">SV Beiträge lfd bezahlter Arbeitslohn</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kz347" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">SV Beiträge zur KZ 351</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kz736" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">SV Beiträge zur KZ 352</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kz737" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">SV Beiträge zur KZ 356</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kz739" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">SV Beiträge zur KZ 738</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzUebrigeBezuege" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Bezüge außerhalb des Staates der Arbeitgeberin/des Arbeitgebers</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kz358" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Einbehaltene Steuer</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzSpesen" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Im Bruttolohn (KZ 350) NICHT enthaltene Spesenersätze und Reisekosten</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzPensionAg" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Im Bruttolohn (KZ 350) NICHT enthaltene Arbeitgeberbeiträge an Pensionskassen</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzKurzarbeit" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Kurzarbeit</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzAltersteilzeit" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Altersteilzeit</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzSozZahlung" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Sozialplanzahlung</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzAusBezuege" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Bezüge aus einer begünstigten Auslandstätigkeit (§ 3 Abs 1 (10) EStG 88)</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="werkverkehrMonate" type="xs:long">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Werkverkehr (§ 26 Z 5 EStG), Anzahl der Kalendermonate</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="homeOfficeTage" type="tageInt">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Homeoffice-Tage</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="homeOfficePauschale" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Homeoffice-Pauschale</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="homeOfficeKostenuebernahme" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Kostenübernahme gemäß § 26 Z 5 lit. b</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="mitarbeiterGewinnbeteiligung" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Mitarbeitergewinnbeteiligung gemäß § 3 Abs. 1 Z 35 </xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="taetigkeitsStaat" type="maxStringLength3">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Tätigkeitsstaat</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="teuerungspraemie" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Teuerungsprämie gemäß § 124b Z 408</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="mitarbeiterpraemie" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Mitarbeiterprämie gemäß § 124b Z 447</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="zuschussArbeitgeberKrankenversicherung" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Zuschuss des Arbeitgebers zur freiwillig gesetzlichen oder privaten Krankenversicherung</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="krankenversichert" type="xs:boolean">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Arbeitnehmer*in ist gesetzlich krankenversichert</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="pauschaleReiseaufwandsentschaedigungen">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="jahr" type="maxStringLength4"/>
+				<xs:element minOccurs="0" name="zeitraumVon" type="maxStringLength4"/>
+				<xs:element minOccurs="0" name="zeitraumBis" type="maxStringLength4"/>
+				<xs:element minOccurs="0" name="nameArbeitgeber" type="maxStringLength37"/>
+				<xs:element minOccurs="0" name="kzSteuerfrei31" type="betrag"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="meldung">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="grunddatenLz">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="jahr" type="maxStringLength4"/>
+							<xs:element name="zeitraumVon" type="maxStringLength2"/>
+							<xs:element name="zeitraumBis" type="maxStringLength2"/>
+							<xs:element name="artLohnzettel" type="maxStringLength2"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="grunddatenArbeitnehmer">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element minOccurs="0" name="vnrArbeitnehmer" type="maxStringLength11">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Sozialversicherungsnummer der Arbeitnehmerin/des Arbeitnehmers</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="nameArbeitnehmer" type="maxStringLength37">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Name</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="titelArbeitnehmer" type="maxStringLength20">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Titel</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="plzArbeitnehmer" type="maxStringLength10">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Postleitzahl</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="ortArbeitnehmer" type="maxStringLength30">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Ort</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="adresseArbeitnehmer" type="maxStringLength37">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Adresse</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="sozialestellungwert" type="sozialestellungwert_EnumType">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Soziale Stellung</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="vnrEhepartner" type="maxStringLength11">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Sozialversicherung des (Ehe)Partners</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element minOccurs="0" name="grunddatenArbeitgeber" type="grunddatenArbeitgeber"/>
+				<xs:element minOccurs="0" name="lzDaten">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element minOccurs="0" name="leistungsartwert" type="leistungsartwert_EnumType">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Leistungsart</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzTagessatz" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Tagsatz</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzTage" type="xs:long">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Anzahl der Tage</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzLbetrag" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Gesamtbetrag der Leistungen</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="mitteilung109a">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="grunddatenLz">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="jahr" type="maxStringLength4"/>
+							<xs:element name="artLohnzettel" type="maxStringLength2"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="grunddatenAuftragnehmer">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element minOccurs="0" name="vnrAuftragnehmer" type="maxStringLength11">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Sozialversicherungsnummer der Auftragnehmerin/des Auftragnehmers</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="nameAuftragnehmer" type="maxStringLength37">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Name</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="titelAuftragnehmer" type="maxStringLength20">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Titel</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="plzAuftragnehmer" type="maxStringLength10">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Postleitzahl</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="ortAuftragnehmer" type="maxStringLength30">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Ort</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="adresseAuftragnehmer" type="maxStringLength37">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Adresse</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element minOccurs="0" name="grunddatenArbeitgeber" type="grunddatenArbeitgeber"/>
+				<xs:element minOccurs="0" name="lzDaten">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element minOccurs="0" name="artleiswert" type="artleiswert_EnumType">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Leistungsart</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzEntgelt" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Entgelt (ohne Umsatzsteuer, einschließlich erhaltener Kostenersätze und Sachbezüge)</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzSvdna" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">Dienstnehmeranteil zur Sozialversicherung</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzBeitrvorsorge" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">An Vorsorgekasse bezahlte Beiträge</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="kzUst" type="betrag">
+								<xs:annotation>
+									<xs:documentation xml:lang="de">In Rechnung gestellte Umsatzsteuer</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="sonderausgaben">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="kategorie" type="xs:string"/>
+				<xs:element name="kategorieText" type="xs:string"/>
+				<xs:element name="betrag" type="betrag"/>
+				<xs:element maxOccurs="unbounded" minOccurs="0" name="sonderausgabenDetail">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="organisation" type="xs:string"/>
+							<xs:element name="betrag" type="betrag"/>
+							<xs:element minOccurs="0" name="status" type="sondAusgStatus_EnumType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="leitungsrechte">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="infrastrukturbetreiber" type="xs:string"/>
+				<xs:element name="betrag" type="betrag"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="oekoSonderausgabenpauschale">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="massnahmeArtCode" type="massnahmeArtCode_EnumType"/>
+				<xs:element name="Veranlagungsjahr" type="maxStringLength4"/>
+				<xs:element name="AnteiligeAuszahlung" type="betrag"/>
+				<xs:element name="AnteiligeKosten" type="betrag"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="hochwasser">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="organisationsName" type="xs:string"/>
+				<xs:element name="gesamtbetrag" type="betrag"/>
+				<xs:element name="teilbetrag" type="xs:boolean"/>
+				<xs:element name="jahr" type="xs:int"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ausserordentlicheGutschrift">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="jahr" type="xs:int"/>
+				<xs:element minOccurs="0" name="betrag" type="betrag"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="grunddatenArbeitgeber">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="nameArbeitgeber" type="maxStringLength37">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Name der Arbeitgeberin/des Arbeitgebers</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="plzArbeitgeber" type="maxStringLength10">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Postleitzahl</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="ortArbeitgeber" type="maxStringLength30">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Ort</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="adresseArbeitgeber" type="maxStringLength37">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Adresse</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="art_EnumType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="LOHNZETTEL">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Lohnzettel, Meldungen, Mitteilungen</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SONDERAUSGABEN"/>
+			<xs:enumeration value="LEITUNGSRECHTE"/>
+			<xs:enumeration value="OEKOSONDERAUSGABENPAUSCHALE"/>
+			<xs:enumeration value="HOCHWASSER"/>
+			<xs:enumeration value="AUSSERORDENTLICHEGUTSCHRIFT"/>
+			<xs:enumeration value="PAUSCHALEREISEAUFWANDSENTSCHAEDIGUNGEN"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="geschlecht_EnumType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="MAENNLICH"/>
+			<xs:enumeration value="WEIBLICH"/>
+			<xs:enumeration value="INTER/DIVERS/OFFEN"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="sozialestellungwert_EnumType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="KEINE ANGABE"/>
+			<xs:enumeration value="LEHRLINGE"/>
+			<xs:enumeration value="ARBEITER"/>
+			<xs:enumeration value="ANGESTELLTE"/>
+			<xs:enumeration value="BEAMTE"/>
+			<xs:enumeration value="VERTRAGSBEDIENSTETE"/>
+			<xs:enumeration value="ASVG-PENSIONISTEN"/>
+			<xs:enumeration value="BEAMTE I.R."/>
+			<xs:enumeration value="SONSTIGE PENSIONISTEN"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="beschaeftigung_EnumType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="VOLLBESCHAEFTIGUNG"/>
+			<xs:enumeration value="TEILZEITBESCHAEFTIGUNG"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="leistungsartwert_EnumType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ALTERSTEILZEITG."/>
+			<xs:enumeration value="AMFG-BEIHILFE"/>
+			<xs:enumeration value="AMSG-BEIHILFE"/>
+			<xs:enumeration value="ARBEITSLOSENGELD"/>
+			<xs:enumeration value="AUSBILDUNGSBEIH."/>
+			<xs:enumeration value="BES. ÜBERBRÜCK."/>
+			<xs:enumeration value="BILDUNGSBONUS CORONA"/>
+			<xs:enumeration value="BILDUNGSTEILZEITG"/>
+			<xs:enumeration value="ENTFERNUNGSBEIH."/>
+			<xs:enumeration value="ERW. ÜBERBRÜCK."/>
+			<xs:enumeration value="ERWEITERTE ALTERSTEILZEIT"/>
+			<xs:enumeration value="FACHKRÄFTESTIPEND"/>
+			<xs:enumeration value="GRÜNDUNGSBEIH."/>
+			<xs:enumeration value="KARENZURLAUBSGELD"/>
+			<xs:enumeration value="KARENZURLAUBSH."/>
+			<xs:enumeration value="KINDERBETREU.BEIH"/>
+			<xs:enumeration value="KOMBILOHN"/>
+			<xs:enumeration value="KURSNEBENKOSTEN"/>
+			<xs:enumeration value="NOTSTANDSHILFE"/>
+			<xs:enumeration value="PENS.VORSCHUSS AA"/>
+			<xs:enumeration value="PENS.VORSCHUSS AI"/>
+			<xs:enumeration value="PENS.VORSCHUSS AR"/>
+			<xs:enumeration value="PENS.VORSCHUSS EA"/>
+			<xs:enumeration value="PENS.VORSCHUSS EI"/>
+			<xs:enumeration value="PENS.VORSCHUSS NA"/>
+			<xs:enumeration value="PENS.VORSCHUSS NI"/>
+			<xs:enumeration value="PENS.VORSCHUSS NR"/>
+			<xs:enumeration value="PENS.VORSCHUSS UA"/>
+			<xs:enumeration value="PENS.VORSCHUSS UI"/>
+			<xs:enumeration value="PFLEGEKARENZ"/>
+			<xs:enumeration value="SOLIDARITÄTSPRÄM."/>
+			<xs:enumeration value="SONDERNOTSTANDSH."/>
+			<xs:enumeration value="SONDERUNTERSTÜTZ"/>
+			<xs:enumeration value="TEILPENSION"/>
+			<xs:enumeration value="TEILZEITBEIHILFE"/>
+			<xs:enumeration value="ÜBERBRÜCKUNGSH."/>
+			<xs:enumeration value="ÜBERGANGSGELD"/>
+			<xs:enumeration value="UMSCHULUNGSGELD"/>
+			<xs:enumeration value="VORMERK.KRANKENV."/>
+			<xs:enumeration value="VORMERK.PENS.VER."/>
+			<xs:enumeration value="VORMERK.SOZ.VERS."/>
+			<xs:enumeration value="VORSCH.KÜND.ENT."/>
+			<xs:enumeration value="VORSCHUSS - REHAB"/>
+			<xs:enumeration value="VORSCHUSS SU"/>
+			<xs:enumeration value="VORSTELLUNGSBEIH."/>
+			<xs:enumeration value="WEITERBILDUNGSG."/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="artleiswert_EnumType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Leistungen als Mitglied des Aufsichtsrates, Verwaltungsrates und andere Leistungen von mit der Überwachung der Geschäftsführung beauftragten Personen (im Sinne des § 6 Abs. 1 Z 9 lit. b UStG 1994)"/>
+			<xs:enumeration value="Leistungen als Bausparkassenvertreter und Versicherungsvertreter (im Sinne des § 6 Abs. 1 Z 13 UStG 1994)"/>
+			<xs:enumeration value="Leistungen als Stiftungsvorstand (§ 15 Privatstiftungsgesetz)"/>
+			<xs:enumeration value="Leistungen als Vortragender, Lehrender und Unterrichtender"/>
+			<xs:enumeration value="Leistungen als Kolporteur und Zeitungszusteller"/>
+			<xs:enumeration value="Leistungen als Privatgeschäftsvermittler"/>
+			<xs:enumeration value="Leistungen als Funktionär von öffentlich-rechtlichen Körperschaften, wenn die Tätigkeit zu Funktionsgebühren nach § 29 Z 4 EStG 1988 führt"/>
+			<xs:enumeration value="sonstige Leistungen, die im Rahmen eines freien Dienstvertrages erbracht werden und der Versicherungspflicht gemäß § 4 Abs. 4 ASVG unterliegen"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="sondAusgStatus_EnumType">
+		<xs:annotation>
+			<xs:documentation xml:lang="de">
+				EFFA - Erfassung Finanzamt
+				DM - Datenübermittler
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="EFFA"/>
+			<xs:enumeration value="DM"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="massnahmeArtCode_EnumType">
+		<xs:annotation>
+			<xs:documentation xml:lang="de">
+				TS - thermisch-energetische Sanierung
+				HT - Heizkesseltausch
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="TS"/>
+			<xs:enumeration value="HT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="maxNumLength2">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="99"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="monateInt">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="12"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="monateDec">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="12"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tageInt">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="365"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tageLong">
+		<xs:restriction base="xs:long">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="365"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="stnr">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="999999999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="betrag">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999999999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="maxStringLength2">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="maxStringLength3">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="maxStringLength4">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="maxStringLength10">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="maxStringLength11">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="11"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="maxStringLength20">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="maxStringLength30">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="maxStringLength37">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="37"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

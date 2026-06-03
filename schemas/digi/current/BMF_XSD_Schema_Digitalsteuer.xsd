@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--Stand: 14.02.2020-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:simpleType name="kztype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="kz"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="datumtype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="datum"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="uhrzeittype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="uhrzeit"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="jahrtype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="jahr"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="kzvorz">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="-9999999999999.99"/>
+			<xs:maxInclusive value="9999999999999.99"/>
+			<xs:totalDigits value="15"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="alphanumerisch50">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="50"/>
+			<xs:minLength value="1"/>
+			<xs:pattern value="[0-9,a-z,A-Z,ä,Ä,ö,Ö,ü,Ü,ß,//,/.,/ ,\-,/,,/(,/),/=,/',/*,/´,/`]{1,50}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ZR_Type">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="6"/>
+			<xs:minLength value="6"/>
+			<xs:pattern value="[0-9]{6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ARTLEIST_EnumType">
+		<xs:annotation>
+			<xs:documentation xml:lang="de">
+				BA = Bannerwerbung, SU = Suchmaschinenwerbung, SO = Sonstige 
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="BA"/>
+			<xs:enumeration value="SU"/>
+			<xs:enumeration value="SO"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ALLGEMEINE_DATEN">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ANBRINGEN"/>
+				<xs:element ref="ZR"/>
+				<xs:element ref="FASTNR"/>
+				<xs:element ref="KUNDENINFO" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ANBRINGEN">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="DIGI"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ANZAHL_ERKLAERUNGEN">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+				<xs:maxInclusive value="300"/>
+				<xs:minInclusive value="1"/>
+				<xs:totalDigits value="3"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ART_IDENTIFIKATIONSBEGRIFF">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="FASTNR"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="BEMESSUNGSGRUNDLAGE">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ARTLEIST" type="ARTLEIST_EnumType"/>
+				<xs:element name="ORT_LTG" type="alphanumerisch50"/>
+				<xs:element name="WJ_BEG" type="ZR_Type"/>
+				<xs:element name="WJ_ENDE" type="ZR_Type"/>
+				<xs:element ref="UMS_212a"/>
+				<xs:element ref="ENTGELT"/>
+				<xs:element ref="AUSG" minOccurs="0"/>
+				<xs:element ref="BEM_GES"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UMS_212a">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kzvorz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ENTGELT">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kzvorz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AUSG">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kzvorz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BEM_GES">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kzvorz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DATUM_ERSTELLUNG">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:date">
+					<xs:attribute name="type" type="datumtype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ERKLAERUNG">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="SATZNR"/>
+				<xs:element ref="ALLGEMEINE_DATEN" minOccurs="0"/>
+				<xs:element ref="BEMESSUNGSGRUNDLAGE" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="art" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="DIGI"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ERKLAERUNGS_UEBERMITTLUNG">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="INFO_DATEN"/>
+				<xs:element ref="ERKLAERUNG" maxOccurs="300"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="FASTNR">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+				<xs:maxInclusive value="989999999"/>
+				<xs:minInclusive value="020000010"/>
+				<xs:pattern value="\d{9}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="IDENTIFIKATIONSBEGRIFF">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+				<xs:maxInclusive value="989999999"/>
+				<xs:minInclusive value="020000010"/>
+				<xs:pattern value="\d{9}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="INFO_DATEN">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ART_IDENTIFIKATIONSBEGRIFF"/>
+				<xs:element ref="IDENTIFIKATIONSBEGRIFF"/>
+				<xs:element ref="PAKET_NR"/>
+				<xs:element ref="DATUM_ERSTELLUNG"/>
+				<xs:element ref="UHRZEIT_ERSTELLUNG"/>
+				<xs:element ref="ANZAHL_ERKLAERUNGEN"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KUNDENINFO">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="50"/>
+				<xs:minLength value="0"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="PAKET_NR">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+				<xs:maxInclusive value="999999999"/>
+				<xs:minInclusive value="1"/>
+				<xs:totalDigits value="9"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="SATZNR">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+				<xs:maxInclusive value="999999999"/>
+				<xs:minInclusive value="1"/>
+				<xs:totalDigits value="9"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="UHRZEIT_ERSTELLUNG">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:time">
+					<xs:attribute name="type" type="uhrzeittype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ZR" type="xs:gYear"/>
+</xs:schema>

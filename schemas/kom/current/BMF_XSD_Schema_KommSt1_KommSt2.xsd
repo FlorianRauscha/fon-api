@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--XSD _ Schema Kommunalsteuererklärung für KommSt1 sowie KommSt2 _ Stand: 06.05.2025-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:simpleType name="alphazeichen40">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="40"/>
+			<xs:minLength value="1"/>
+			<xs:pattern value="[a-z,A-Z,ä,Ä,ö,Ö,ü,Ü,ß,//,/.,/ ,\-,/,,/(,/),/=,/',/*,/´,/`]{1,40}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="datumtype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="datum"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="jahrmonattype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="jahrmonat"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="kz">
+		<xs:restriction base="xs:decimal">
+			<xs:maxInclusive value="9999999999999.99"/>
+			<xs:minInclusive value="0.00"/>
+			<xs:totalDigits value="15"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="kztype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="kz"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="uhrzeittype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="uhrzeit"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ALLGEMEINE_DATEN">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ANBRINGEN"/>
+				<xs:element ref="JAHR" minOccurs="0"/>
+				<xs:element ref="ZR" minOccurs="0"/>
+				<xs:element ref="FASTNR"/>
+				<xs:element ref="KUNDENINFO" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ANBRINGEN">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="KOMMST1"/>
+				<xs:enumeration value="KOMMST2"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ANZAHL_ERKLAERUNGEN">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+				<xs:maxInclusive value="9999"/>
+				<xs:minInclusive value="1"/>
+				<xs:totalDigits value="4"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ART_IDENTIFIKATIONSBEGRIFF">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="FASTNR"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="BMG">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DATUM_ERSTELLUNG">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:date">
+					<xs:attribute name="type" type="datumtype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ERKLAERUNG">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="SATZNR"/>
+				<xs:element ref="ALLGEMEINE_DATEN"/>
+				<xs:element ref="GESAMTE_BEMESSUNGSGRUNDLAGE" minOccurs="0"/>
+				<xs:element ref="GEMEINDE" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="art" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="KOMMST1"/>
+						<xs:enumeration value="KOMMST2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ERKLAERUNGS_UEBERMITTLUNG">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="INFO_DATEN"/>
+				<xs:element ref="KOMMUNALSTEUERERKLAERUNG"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="FASTNR">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+				<xs:maxInclusive value="989999999"/>
+				<xs:minInclusive value="020000010"/>
+				<xs:pattern value="\d{9}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="GD">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+				<xs:pattern value="\d{5}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="GEM" type="alphazeichen40"/>
+	<xs:element name="GEMEINDE">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="GD"/>
+				<xs:element ref="PLZ"/>
+				<xs:element ref="GEM"/>
+				<xs:element ref="BMG" minOccurs="0"/>
+				<xs:element ref="STEUER" minOccurs="0"/>
+				<xs:element ref="RUECK" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GESAMTE_BEMESSUNGSGRUNDLAGE">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="GESAMT_BMG"/>
+				<xs:element ref="GESAMT_STEUER"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GESAMT_BMG">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GESAMT_STEUER">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IDENTIFIKATIONSBEGRIFF">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+				<xs:maxInclusive value="989999999"/>
+				<xs:minInclusive value="020000010"/>
+				<xs:pattern value="\d{9}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="INFO_DATEN">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ART_IDENTIFIKATIONSBEGRIFF"/>
+				<xs:element ref="IDENTIFIKATIONSBEGRIFF"/>
+				<xs:element ref="PAKET_NR"/>
+				<xs:element ref="DATUM_ERSTELLUNG"/>
+				<xs:element ref="UHRZEIT_ERSTELLUNG"/>
+				<xs:element ref="ANZAHL_ERKLAERUNGEN"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="JAHR" type="xs:gYear"/>
+	<xs:element name="KOMMUNALSTEUERERKLAERUNG">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ERKLAERUNG" maxOccurs="9999"/>
+			</xs:sequence>
+			<xs:attribute name="art" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KUNDENINFO">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="50"/>
+				<xs:minLength value="0"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="PAKET_NR">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+				<xs:maxInclusive value="999999999"/>
+				<xs:minInclusive value="1"/>
+				<xs:totalDigits value="9"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="PLZ">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+				<xs:pattern value="\d{4}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="RUECK">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="J"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="SATZNR">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+				<xs:maxInclusive value="999999999"/>
+				<xs:minInclusive value="1"/>
+				<xs:totalDigits value="9"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="STEUER">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UHRZEIT_ERSTELLUNG">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:time">
+					<xs:attribute name="type" type="uhrzeittype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ZR">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:gYearMonth">
+					<xs:attribute name="type" type="jahrmonattype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

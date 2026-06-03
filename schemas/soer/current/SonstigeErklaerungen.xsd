@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Stand: 30.01.2020-->
+<xsd:schema xmlns="https://finanzonline.bmf.gv.at/fon/ws/uebermittlungSonstigeErklaerungen" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="https://finanzonline.bmf.gv.at/fon/ws/uebermittlungSonstigeErklaerungen" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<xsd:element name="SonstigeErklaerungenUebermittlung">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Info_Daten" type="Info_Daten" minOccurs="0"/>
+				<xsd:element name="MessageSpec" type="MessageSpec_Type"/>
+				<xsd:element name="SOER" type="SonstigeErklaerungen_Type" minOccurs="1" maxOccurs="10000"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="Info_Daten">
+		<xsd:sequence>
+			<xsd:element name="Fastnr_Fon_Tn" type="FASTNR"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- Complex Types -->
+	<xsd:complexType name="MessageSpec_Type">
+		<xsd:sequence>
+			<xsd:element name="MessageRefId" type="MessageRefId_Type"/>
+			<xsd:element name="Timestamp" type="xsd:dateTime"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SonstigeErklaerungen_Type">
+		<xsd:sequence>
+			<xsd:element name="RefNr" type="RefNrString"/>
+			<xsd:element name="Fastnr_Org" type="FASTNR"/>
+			<xsd:element name="Datvon" type="ZR_Type" minOccurs="1"/>
+			<xsd:element name="Datbis" type="ZR_Type" minOccurs="0"/>
+			<xsd:element name="Anhang" type="Anhang_Type" minOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="art" type="Art_EnumType" use="required"/>
+	</xsd:complexType>
+	<!-- Simple Types -->
+	<xsd:simpleType name="RefNrString">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="23"/>
+			<xsd:minLength value="1"/>
+			<xsd:pattern value="[0-9a-zA-Z\-\\/]{1,23}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MessageRefId_Type">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="36"/>
+			<xsd:minLength value="1"/>
+			<xsd:pattern value="[0-9a-zA-Z\-]{1,36}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Anhang_Type">
+		<xsd:restriction base="xsd:base64Binary"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="FASTNR">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="9"/>
+			<xsd:minLength value="9"/>
+			<xsd:pattern value="[0-9]{1,9}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ZR_Type">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="6"/>
+			<xsd:minLength value="4"/>
+			<xsd:pattern value="[0-9]{4,6}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Art_EnumType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="de">
+				E108c, KR1, ENAV1, KOH1, WA1, ELA1, EGA1
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="E108c"/>
+			<xsd:enumeration value="KR1"/>
+			<xsd:enumeration value="ENAV1"/>
+			<xsd:enumeration value="KOH1"/>
+			<xsd:enumeration value="WA1"/>
+			<xsd:enumeration value="ELA1"/>
+			<xsd:enumeration value="EGA1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

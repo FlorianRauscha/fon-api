@@ -1,0 +1,56 @@
+name: Update BMF schemas
+
+on:
+  schedule:
+    # 06:00 UTC every Monday
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    name: Re-fetch + diff + open PR if any sha256 drifts
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Refresh schemas
+        run: npm run update-schemas
+
+      - name: Detect changes
+        id: diff
+        run: |
+          if git diff --quiet -- schemas; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            git diff --stat -- schemas
+          fi
+
+      - name: Open PR if schemas drifted
+        if: steps.diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: chore/schema-refresh
+          title: "chore(schemas): refresh BMF XSDs"
+          commit-message: "chore(schemas): refresh BMF XSDs"
+          body: |
+            Automated weekly refresh of the BMF FinanzOnline schemas.
+
+            One or more upstream `xsd` URLs returned a body with a different sha256
+            from the value pinned in `schemas/manifest.json`. Review the diff to
+            determine whether typed bodies / Zod schemas / builders need follow-up
+            updates.
+          add-paths: schemas
+          delete-branch: true

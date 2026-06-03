@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="urn:oecd:ties:nationalcbc:v2" xmlns:cbc="urn:oecd:ties:cbc:v2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:oecd:ties:nationalcbc:v2" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<xsd:import namespace="urn:oecd:ties:cbc:v2" schemaLocation="CbcXML_v2.0.xsd" />
+	
+	<xsd:element name="Cbc_National">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Info_Daten" type="Info_Daten"/>
+				<xsd:element ref="cbc:CBC_OECD"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:complexType name="Info_Daten">
+		<xsd:sequence>
+			<xsd:element name="Fastnr_Fon_Tn" type="FASTNR"/>
+			<xsd:element name="Fastnr_Org" type="FASTNR"/>
+			<xsd:element name="Vers" type="Vers"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="FASTNR">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="9"/>
+			<xsd:minLength value="9"/>
+			<xsd:pattern value="[0-9]{1,9}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="Vers">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[0-9]{2}\.[0-9]{2}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

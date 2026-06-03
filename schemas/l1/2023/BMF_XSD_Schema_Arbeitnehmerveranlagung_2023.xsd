@@ -1,0 +1,1427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Stand: 06.10.2023-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:include schemaLocation="../../laender/laender_kfz.xsd"/>
+	<xs:simpleType name="alphanumerisch30u">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="30"/>
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="alphanumerisch25u">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="25"/>
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="alphanumerisch20">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="20"/>
+			<xs:minLength value="1"/>
+			<xs:pattern value="[0-9,a-z,A-Z,ä,Ä,ö,Ö,ü,Ü,ß,//,/.,/ ,\-,/,,/(,/),/=,/',/*,/´,/`]{1,20}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="prozent">
+		<xs:restriction base="xs:positiveInteger">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="100"/>
+			<xs:totalDigits value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="prozent0">
+		<xs:restriction base="xs:nonNegativeInteger">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="100"/>
+			<xs:totalDigits value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="siebenstellen">
+		<xs:restriction base="xs:positiveInteger">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="9999999"/>
+			<xs:totalDigits value="7"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="zweistellen">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="99"/>
+			<xs:totalDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="vnr">
+		<xs:restriction base="xs:positiveInteger">
+			<xs:minInclusive value="0000000001"/>
+			<xs:maxInclusive value="9999311299"/>
+			<xs:pattern value="\d{10}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="kz">
+		<xs:restriction base="xs:decimal">
+			<xs:maxInclusive value="9999999999999.99"/>
+			<xs:minInclusive value="-9999999999999.99"/>
+			<xs:totalDigits value="15"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="wahl">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="J"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="janein">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="J"/>
+			<xs:enumeration value="N"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="kztype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="kz"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="datumtype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="datum"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="monattype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="monat"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="monattagtype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="monattag"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="uhrzeittype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="uhrzeit"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="oesterreich">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="AEAB" type="wahl"/>
+	<xs:element name="AGBEL_K">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AGBEL_P" type="wahl"/>
+	<xs:element name="AGLST" type="wahl"/>
+	<xs:element name="ALLGEMEIN">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="KZ730" minOccurs="0"/>
+				<xs:element ref="KZ731" minOccurs="0"/>
+				<xs:element ref="KZ734" minOccurs="0"/>
+				<xs:element ref="KZ735" minOccurs="0"/>
+				<xs:element ref="KZ475" minOccurs="0"/>
+				<xs:element ref="OPFERAUS" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ALLGEMEINE_DATEN">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ANBRINGEN"/>
+				<xs:element ref="ZR"/>
+				<xs:element ref="FASTNR"/>
+				<xs:element ref="KUNDENINFO" minOccurs="0"/>
+				<xs:element ref="ANZBEZ"/>
+				<xs:element ref="KZ725" minOccurs="0"/>
+				<xs:element ref="AVAB" minOccurs="0"/>
+				<xs:element ref="AEAB" minOccurs="0"/>
+				<xs:element ref="KINDFB" minOccurs="0"/>
+				<xs:element ref="KMB_30" minOccurs="0"/>
+				<xs:element ref="KMB_PART" minOccurs="0"/>
+				<xs:element ref="AGBEL_P" minOccurs="0"/>
+				<xs:element ref="ERH_PAB" minOccurs="0"/>
+				<xs:element ref="MEHRKI" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ANBRINGEN">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="L1"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ANTR14" type="wahl"/>
+	<xs:element name="ANTR9911" type="wahl"/>
+	<xs:element name="ANZAHL_ERKLAERUNGEN">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+				<xs:maxInclusive value="9999"/>
+				<xs:minInclusive value="1"/>
+				<xs:totalDigits value="4"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ANZBEZ" type="zweistellen"/>
+	<xs:element name="ANZL17" type="zweistellen"/>
+	<xs:element name="ART_IDENTIFIKATIONSBEGRIFF">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="FASTNR"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="AS_STAAT" type="laender"/>
+	<xs:element name="AUSAG" type="wahl"/>
+	<xs:element name="AUSANTR" type="wahl"/>
+	<xs:element name="AUSERH" type="wahl"/>
+	<xs:element name="AUSL_BON" type="wahl"/>
+	<xs:element name="ANS_BSG" type="wahl"/>
+	<xs:element name="AUSL_EIN" type="wahl"/>
+	<xs:element name="AUSL_K_A">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:gMonth">
+					<xs:attribute name="type" type="monattype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AUSL_K_E">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:gMonth">
+					<xs:attribute name="type" type="monattype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AUSLBEH" type="wahl"/>
+	<xs:element name="AUSLBEZ" type="wahl"/>
+	<xs:element name="AUSLST1">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AUSLST2">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AUSNEIN" type="wahl"/>
+	<xs:element name="AUSSERGEWOEHNLICHE_BELASTUNGEN">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ALLGEMEIN" minOccurs="0"/>
+				<xs:element ref="BEHINDERUNG" minOccurs="0"/>
+				<xs:element ref="KIND_AUSBILDUNG_BEHINDERUNG" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AVAB" type="wahl"/>
+	<xs:element name="BEHINDERUNG">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="BEHINDERUNG_STEUERPFLICHTIGER" minOccurs="0"/>
+				<xs:element ref="BEHINDERUNG_PARTNER" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BEHINDERUNG_PARTNER">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="KOERPER_P" minOccurs="0"/>
+				<xs:element ref="DIAET_P_Z" minOccurs="0"/>
+				<xs:element ref="DIAET_P_G" minOccurs="0"/>
+				<xs:element ref="DIAET_P_M" minOccurs="0"/>
+				<xs:element ref="PFLEGE_P_A" minOccurs="0"/>
+				<xs:element ref="PFLEGE_P_E" minOccurs="0"/>
+				<xs:element ref="KFZ_P" minOccurs="0"/>
+				<xs:element ref="KZ436" minOccurs="0"/>
+				<xs:element ref="KZ417" minOccurs="0"/>
+				<xs:element ref="KZ418" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BEHINDERUNG_STEUERPFLICHTIGER">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="KOERPER_S" minOccurs="0"/>
+				<xs:element ref="DIAET_S_Z" minOccurs="0"/>
+				<xs:element ref="DIAET_S_G" minOccurs="0"/>
+				<xs:element ref="DIAET_S_M" minOccurs="0"/>
+				<xs:element ref="PFLEGE_S_A" minOccurs="0"/>
+				<xs:element ref="PFLEGE_S_E" minOccurs="0"/>
+				<xs:element ref="KFZ_S" minOccurs="0"/>
+				<xs:element ref="KZ435" minOccurs="0"/>
+				<xs:element ref="KZ476" minOccurs="0"/>
+				<xs:element ref="KZ439" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BERUF" type="alphanumerisch30u"/>
+	<xs:element name="BESCHPFL" type="wahl"/>
+	<xs:element name="BESONDERE_SONDERAUSGABEN_VERTEILUNG">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="FAM_D" minOccurs="0"/>
+				<xs:element ref="VOR_D" minOccurs="0"/>
+				<xs:element ref="VNR_D" minOccurs="0"/>
+				<xs:element ref="GEBDAT_D" minOccurs="0"/>
+				<xs:element ref="KZ458" minOccurs="0"/>
+				<xs:element ref="ZUS1_D" minOccurs="0"/>
+				<xs:element ref="KZ281" minOccurs="0"/>
+				<xs:element ref="KZ282" minOccurs="0"/>
+				<xs:element ref="KZ283" minOccurs="0"/>
+				<xs:element ref="ZEHN1_D" minOccurs="0"/>
+				<xs:element ref="KZ284" minOccurs="0"/>
+				<xs:element ref="ZEHN2_D" minOccurs="0"/>
+				<xs:element ref="ZUS2_D" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DATUM_ERSTELLUNG">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:date">
+					<xs:attribute name="type" type="datumtype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DBANRECH" type="wahl"/>
+	<xs:element name="DIAET_K_G" type="wahl"/>
+	<xs:element name="DIAET_K_M" type="wahl"/>
+	<xs:element name="DIAET_K_Z" type="wahl"/>
+	<xs:element name="DIAET_P_G" type="wahl"/>
+	<xs:element name="DIAET_P_M" type="wahl"/>
+	<xs:element name="DIAET_P_Z" type="wahl"/>
+	<xs:element name="DIAET_S_G" type="wahl"/>
+	<xs:element name="DIAET_S_M" type="wahl"/>
+	<xs:element name="DIAET_S_Z" type="wahl"/>
+	<xs:element name="EINK_AND">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EINK_S">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EINK_P">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ERH_PAB" type="wahl"/>
+	<xs:element name="ERKLAERUNG">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="SATZNR"/>
+				<xs:element ref="ALLGEMEINE_DATEN"/>
+				<xs:element ref="SONDERAUSGABEN" minOccurs="0"/>
+				<xs:element ref="WERBUNGSKOSTEN" minOccurs="0"/>
+				<xs:element ref="AUSSERGEWOEHNLICHE_BELASTUNGEN" minOccurs="0"/>
+				<xs:element ref="FREIBETRAGSBESCHEID" minOccurs="0"/>
+				<xs:element ref="INTERNATIONAL" minOccurs="0"/>
+				<xs:element ref="BESONDERE_SONDERAUSGABEN_VERTEILUNG" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="art" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ERKLAERUNGS_UEBERMITTLUNG">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="INFO_DATEN"/>
+				<xs:element ref="ERKLAERUNG" maxOccurs="4000"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EUROKV" type="alphanumerisch20"/>
+	<xs:element name="FAMNAME" type="alphanumerisch25u"/>
+	<xs:element name="FAM_D" type="alphanumerisch25u"/>
+	<xs:element name="FASTNR">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="9"/>
+				<xs:minLength value="9"/>
+				<xs:pattern value="[0-9]{1,9}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="FB1_S" type="wahl"/>
+	<xs:element name="FB1_P" type="wahl"/>
+	<xs:element name="FB1_U" type="wahl"/>
+	<xs:element name="FB1_50" type="wahl"/>
+	<xs:element name="FB1_100" type="wahl"/>
+	<xs:element name="FB2_S" type="wahl"/>
+	<xs:element name="FB2_P" type="wahl"/>
+	<xs:element name="FB2_U" type="wahl"/>
+	<xs:element name="FB2_50" type="wahl"/>
+	<xs:element name="FB2_100" type="wahl"/>
+	<xs:element name="FB3_S" type="wahl"/>
+	<xs:element name="FB3_P" type="wahl"/>
+	<xs:element name="FB3_U" type="wahl"/>
+	<xs:element name="FB3_50" type="wahl"/>
+	<xs:element name="FB3_100" type="wahl"/>
+	<xs:element name="FB4_S" type="wahl"/>
+	<xs:element name="FB4_P" type="wahl"/>
+	<xs:element name="FB4_U" type="wahl"/>
+	<xs:element name="FB4_50" type="wahl"/>
+	<xs:element name="FB4_100" type="wahl"/>
+	<xs:element name="FB5_S" type="wahl"/>
+	<xs:element name="FB5_P" type="wahl"/>
+	<xs:element name="FB5_U" type="wahl"/>
+	<xs:element name="FB5_50" type="wahl"/>
+	<xs:element name="FB5_100" type="wahl"/>
+	<xs:element name="FB6_S" type="wahl"/>
+	<xs:element name="FB6_P" type="wahl"/>
+	<xs:element name="FB6_U" type="wahl"/>
+	<xs:element name="FB6_50" type="wahl"/>
+	<xs:element name="FB6_100" type="wahl"/>
+	<xs:element name="FB7_S" type="wahl"/>
+	<xs:element name="FB7_P" type="wahl"/>
+	<xs:element name="FB7_U" type="wahl"/>
+	<xs:element name="FB7_50" type="wahl"/>
+	<xs:element name="FB7_100" type="wahl"/>
+	<xs:element name="FB8_S" type="wahl"/>
+	<xs:element name="FB8_P" type="wahl"/>
+	<xs:element name="FB8_U" type="wahl"/>
+	<xs:element name="FB8_50" type="wahl"/>
+	<xs:element name="FB8_100" type="wahl"/>
+	<xs:element name="FB9_S" type="wahl"/>
+	<xs:element name="FB9_P" type="wahl"/>
+	<xs:element name="FB9_U" type="wahl"/>
+	<xs:element name="FB9_50" type="wahl"/>
+	<xs:element name="FB9_100" type="wahl"/>
+	<xs:element name="FB10_S" type="wahl"/>
+	<xs:element name="FB10_P" type="wahl"/>
+	<xs:element name="FB10_U" type="wahl"/>
+	<xs:element name="FB10_50" type="wahl"/>
+	<xs:element name="FB10_100" type="wahl"/>
+	<xs:element name="FB11_S" type="wahl"/>
+	<xs:element name="FB11_P" type="wahl"/>
+	<xs:element name="FB11_U" type="wahl"/>
+	<xs:element name="FB11_50" type="wahl"/>
+	<xs:element name="FB11_100" type="wahl"/>
+	<xs:element name="FB12_S" type="wahl"/>
+	<xs:element name="FB12_P" type="wahl"/>
+	<xs:element name="FB12_U" type="wahl"/>
+	<xs:element name="FB12_50" type="wahl"/>
+	<xs:element name="FB12_100" type="wahl"/>
+	<xs:element name="FBERH_K_A">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:gMonth">
+					<xs:attribute name="type" type="monattype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="FBERH_K_E">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:gMonth">
+					<xs:attribute name="type" type="monattype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="FBSN_50" type="wahl"/>
+	<xs:element name="FBSN_100" type="wahl"/>
+	<xs:element name="FBPN_50" type="wahl"/>
+	<xs:element name="FBPN_100" type="wahl"/>
+	<xs:element name="FBSU_50" type="wahl"/>
+	<xs:element name="FBSU_100" type="wahl"/>
+	<xs:element name="FREIBETRAGSBESCHEID">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="INDFB" minOccurs="0"/>
+				<xs:element ref="KZ449" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GEBDAT_D">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:date">
+					<xs:attribute name="type" type="datumtype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GEBKIN_K">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:date">
+					<xs:attribute name="type" type="datumtype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GREG1614" type="wahl"/>
+	<xs:element name="IDENTIFIKATIONSBEGRIFF">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="9"/>
+				<xs:minLength value="9"/>
+				<xs:pattern value="\d{9}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="INDFB" type="wahl"/>
+	<xs:element name="INFO_DATEN">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ART_IDENTIFIKATIONSBEGRIFF"/>
+				<xs:element ref="IDENTIFIKATIONSBEGRIFF"/>
+				<xs:element ref="PAKET_NR"/>
+				<xs:element ref="DATUM_ERSTELLUNG"/>
+				<xs:element ref="UHRZEIT_ERSTELLUNG"/>
+				<xs:element ref="ANZAHL_ERKLAERUNGEN"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="INLBEZ" type="wahl"/>
+	<xs:element name="INL_BON" type="wahl"/>
+	<xs:element name="INTERNATIONAL">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="WS_INL" minOccurs="0"/>
+				<xs:element ref="GREG1614" minOccurs="0"/>
+				<xs:element ref="WS_AUSAG" minOccurs="0"/>
+				<xs:element ref="AUSLBEH" minOccurs="0"/>
+				<xs:element ref="AUSLBEZ" minOccurs="0"/>
+				<xs:element ref="INL_BON" minOccurs="0"/>
+				<xs:element ref="DBANRECH" minOccurs="0"/>
+				<xs:element ref="WS_AUSL" minOccurs="0"/>
+				<xs:element ref="AGLST" minOccurs="0"/>
+				<xs:element ref="INLBEZ" minOccurs="0"/>
+				<xs:element ref="AUSAG" minOccurs="0"/>
+				<xs:element ref="AUSL_BON" minOccurs="0"/>
+				<xs:element ref="STAAT_3" minOccurs="0"/>
+				<xs:element ref="ANS_BSG" minOccurs="0"/>
+				<xs:element ref="AUSL_EIN" minOccurs="0"/>
+				<xs:element ref="KZ359" minOccurs="0"/>
+				<xs:element ref="PENSAUSL" minOccurs="0"/>
+				<xs:element ref="KZ183" minOccurs="0"/>
+				<xs:element ref="KZ377" minOccurs="0"/>
+				<xs:element ref="ANZL17" minOccurs="0"/>
+				<xs:element ref="KZ154" minOccurs="0"/>
+				<xs:element ref="KZ544" minOccurs="0"/>
+				<xs:element ref="LAND1_L1" minOccurs="0"/>
+				<xs:element ref="WK1_L1" minOccurs="0"/>
+				<xs:element ref="AUSLST1" minOccurs="0"/>
+				<xs:element ref="LAND2_L1" minOccurs="0"/>
+				<xs:element ref="WK2_L1" minOccurs="0"/>
+				<xs:element ref="AUSLST2" minOccurs="0"/>
+				<xs:element ref="AUSNEIN" minOccurs="0"/>
+				<xs:element ref="AUSERH" minOccurs="0"/>
+				<xs:element ref="AUSANTR" minOccurs="0"/>
+				<xs:element ref="KZ775" minOccurs="0"/>
+				<xs:element ref="KZ453" minOccurs="0"/>
+				<xs:element ref="KZ184" minOccurs="0"/>
+				<xs:element ref="SV_184" minOccurs="0"/>
+				<xs:element ref="KZ493" minOccurs="0"/>
+				<xs:element ref="KZ791" minOccurs="0"/>
+				<xs:element ref="ANTR9911" minOccurs="0"/>
+				<xs:element ref="BESCHPFL" minOccurs="0"/>
+				<xs:element ref="KEINWS" minOccurs="0"/>
+				<xs:element ref="AS_STAAT" minOccurs="0"/>
+				<xs:element ref="STAAT_AN" minOccurs="0"/>
+				<xs:element ref="ANTR14" minOccurs="0"/>
+				<xs:element ref="EINK_S" minOccurs="0"/>
+				<xs:element ref="EINK_AND" minOccurs="0"/>
+				<xs:element ref="EINK_P" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KEINWS" type="wahl"/>
+	<xs:element name="KFZ_P" type="wahl"/>
+	<xs:element name="KFZ_S" type="wahl"/>
+	<xs:element name="KINDFB" type="zweistellen"/>
+	<xs:element name="KIND_ANGABEN">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="FAMNAME" minOccurs="0"/>
+				<xs:element ref="VORNAME" minOccurs="0"/>
+				<xs:element ref="VNRKIN_K" minOccurs="0"/>
+				<xs:element ref="GEBKIN_K" minOccurs="0"/>
+				<xs:element ref="EUROKV" minOccurs="0"/>
+				<xs:element ref="WS_KIND" minOccurs="0"/>
+				<xs:element ref="FBSN_50" minOccurs="0"/>
+				<xs:element ref="FBSN_100" minOccurs="0"/>
+				<xs:element ref="FBPN_50" minOccurs="0"/>
+				<xs:element ref="FBPN_100" minOccurs="0"/>
+				<xs:element ref="FBSU_50" minOccurs="0"/>
+				<xs:element ref="FBSU_100" minOccurs="0"/>
+				<xs:element ref="UAB_50" minOccurs="0"/>
+				<xs:element ref="UAB_100" minOccurs="0"/>
+				<xs:element ref="UNT_GES" minOccurs="0"/>
+				<xs:element ref="UNT_MTL" minOccurs="0"/>
+				<xs:element ref="UNTAUSL" minOccurs="0"/>
+				<xs:element ref="AUSL_K_A" minOccurs="0"/>
+				<xs:element ref="AUSL_K_E" minOccurs="0"/>
+				<xs:element ref="AGBEL_K" minOccurs="0"/>
+				<xs:element ref="KOSTRA_K" minOccurs="0"/>
+				<xs:element ref="MMBERU_K" minOccurs="0"/>
+				<xs:element ref="PLZ_K" minOccurs="0"/>
+				<xs:element ref="STAAT_K" minOccurs="0"/>
+				<xs:element ref="KOERPER_K" minOccurs="0"/>
+				<xs:element ref="DIAET_K_Z" minOccurs="0"/>
+				<xs:element ref="DIAET_K_G" minOccurs="0"/>
+				<xs:element ref="DIAET_K_M" minOccurs="0"/>
+				<xs:element ref="FBERH_K_A" minOccurs="0"/>
+				<xs:element ref="FBERH_K_E" minOccurs="0"/>
+				<xs:element ref="PFLEGE_K" minOccurs="0"/>
+				<xs:element ref="PFLEGE_K_A" minOccurs="0"/>
+				<xs:element ref="PFLEGE_K_E" minOccurs="0"/>
+				<xs:element ref="KZ28_K" minOccurs="0"/>
+				<xs:element ref="KZ71_K" minOccurs="0"/>
+				<xs:element ref="KZ29_K" minOccurs="0"/>
+				<xs:element ref="NVSTAGZ" minOccurs="0"/>
+				<xs:element ref="FB1_S" minOccurs="0"/>
+				<xs:element ref="FB1_P" minOccurs="0"/>
+				<xs:element ref="FB1_U" minOccurs="0"/>
+				<xs:element ref="FB1_50" minOccurs="0"/>
+				<xs:element ref="FB1_100" minOccurs="0"/>
+				<xs:element ref="FB2_S" minOccurs="0"/>
+				<xs:element ref="FB2_P" minOccurs="0"/>
+				<xs:element ref="FB2_U" minOccurs="0"/>
+				<xs:element ref="FB2_50" minOccurs="0"/>
+				<xs:element ref="FB2_100" minOccurs="0"/>
+				<xs:element ref="FB3_S" minOccurs="0"/>
+				<xs:element ref="FB3_P" minOccurs="0"/>
+				<xs:element ref="FB3_U" minOccurs="0"/>
+				<xs:element ref="FB3_50" minOccurs="0"/>
+				<xs:element ref="FB3_100" minOccurs="0"/>
+				<xs:element ref="FB4_S" minOccurs="0"/>
+				<xs:element ref="FB4_P" minOccurs="0"/>
+				<xs:element ref="FB4_U" minOccurs="0"/>
+				<xs:element ref="FB4_50" minOccurs="0"/>
+				<xs:element ref="FB4_100" minOccurs="0"/>
+				<xs:element ref="FB5_S" minOccurs="0"/>
+				<xs:element ref="FB5_P" minOccurs="0"/>
+				<xs:element ref="FB5_U" minOccurs="0"/>
+				<xs:element ref="FB5_50" minOccurs="0"/>
+				<xs:element ref="FB5_100" minOccurs="0"/>
+				<xs:element ref="FB6_S" minOccurs="0"/>
+				<xs:element ref="FB6_P" minOccurs="0"/>
+				<xs:element ref="FB6_U" minOccurs="0"/>
+				<xs:element ref="FB6_50" minOccurs="0"/>
+				<xs:element ref="FB6_100" minOccurs="0"/>
+				<xs:element ref="FB7_S" minOccurs="0"/>
+				<xs:element ref="FB7_P" minOccurs="0"/>
+				<xs:element ref="FB7_U" minOccurs="0"/>
+				<xs:element ref="FB7_50" minOccurs="0"/>
+				<xs:element ref="FB7_100" minOccurs="0"/>
+				<xs:element ref="FB8_S" minOccurs="0"/>
+				<xs:element ref="FB8_P" minOccurs="0"/>
+				<xs:element ref="FB8_U" minOccurs="0"/>
+				<xs:element ref="FB8_50" minOccurs="0"/>
+				<xs:element ref="FB8_100" minOccurs="0"/>
+				<xs:element ref="FB9_S" minOccurs="0"/>
+				<xs:element ref="FB9_P" minOccurs="0"/>
+				<xs:element ref="FB9_U" minOccurs="0"/>
+				<xs:element ref="FB9_50" minOccurs="0"/>
+				<xs:element ref="FB9_100" minOccurs="0"/>
+				<xs:element ref="FB10_S" minOccurs="0"/>
+				<xs:element ref="FB10_P" minOccurs="0"/>
+				<xs:element ref="FB10_U" minOccurs="0"/>
+				<xs:element ref="FB10_50" minOccurs="0"/>
+				<xs:element ref="FB10_100" minOccurs="0"/>
+				<xs:element ref="FB11_S" minOccurs="0"/>
+				<xs:element ref="FB11_P" minOccurs="0"/>
+				<xs:element ref="FB11_U" minOccurs="0"/>
+				<xs:element ref="FB11_50" minOccurs="0"/>
+				<xs:element ref="FB11_100" minOccurs="0"/>
+				<xs:element ref="FB12_S" minOccurs="0"/>
+				<xs:element ref="FB12_P" minOccurs="0"/>
+				<xs:element ref="FB12_U" minOccurs="0"/>
+				<xs:element ref="FB12_50" minOccurs="0"/>
+				<xs:element ref="FB12_100" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KIND_AUSBILDUNG_BEHINDERUNG">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="KIND_ANGABEN" maxOccurs="20"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KMB_30" type="wahl"/>
+	<xs:element name="KMB_PART" type="wahl"/>
+	<xs:element name="KOERPER_K" type="prozent0"/>
+	<xs:element name="KOERPER_P" type="prozent0"/>
+	<xs:element name="KOERPER_S" type="prozent0"/>
+	<xs:element name="KOSTRA_K" type="prozent"/>
+	<xs:element name="KUNDENINFO">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="50"/>
+				<xs:minLength value="0"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="KZ154">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ158">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ159">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ169">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ183">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ184">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ274">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ28_K">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ29_K">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ280">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ281">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ282">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ283">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ284">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ300">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ359">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ377">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ417">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ418">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ435">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ436">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ437">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ438">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ439">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ449">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ453">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ458">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ460">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ475">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ476">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ493">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ544">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ717">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ718">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ719">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ71_K">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ720">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ721">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ722">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ723">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ724">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ725">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ730">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ731">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ734">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ735">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ775">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ791">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KZ916">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="LAND1_L1" type="laender"/>
+	<xs:element name="LAND2_L1" type="laender"/>
+	<xs:element name="MEHRKI" type="wahl"/>
+	<xs:element name="MMBERU_K" type="zweistellen"/>
+	<xs:element name="NVSTAGZ">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OPFERAUS" type="wahl"/>
+	<xs:element name="PAKET_NR">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+				<xs:maxInclusive value="999999999"/>
+				<xs:minInclusive value="1"/>
+				<xs:totalDigits value="9"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="PENSAUSL" type="wahl"/>
+	<xs:element name="PFLEGE_K">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PFLEGE_K_A">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:gMonth">
+					<xs:attribute name="type" type="monattype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PFLEGE_K_E">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:gMonth">
+					<xs:attribute name="type" type="monattype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PFLEGE_P_A">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:gMonth">
+					<xs:attribute name="type" type="monattype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PFLEGE_P_E">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:gMonth">
+					<xs:attribute name="type" type="monattype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PFLEGE_S_A">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:gMonth">
+					<xs:attribute name="type" type="monattype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PFLEGE_S_E">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:gMonth">
+					<xs:attribute name="type" type="monattype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PLZ_K">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9,A-Z,/ ]{4,10}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="SATZNR" type="xs:positiveInteger"/>
+	<xs:element name="SONDERAUSGABEN">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="KZ280" minOccurs="0"/>
+				<xs:element ref="KZ460" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="STAAT_3">
+		<xs:simpleType>
+			<xs:union memberTypes="laender oesterreich"/>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="STAAT_AN">
+		<xs:simpleType>
+			<xs:union memberTypes="laender oesterreich"/>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="STAAT_K">
+		<xs:simpleType>
+			<xs:union memberTypes="laender oesterreich"/>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="SV_184" type="janein"/>
+	<xs:element name="UAB_50" type="wahl"/>
+	<xs:element name="UAB_100" type="wahl"/>
+	<xs:element name="UHRZEIT_ERSTELLUNG">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:time">
+					<xs:attribute name="type" type="uhrzeittype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UNT_GES">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UNT_MTL">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UNTAUSL">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="VNRKIN_K" type="vnr"/>
+	<xs:element name="VNR_D" type="vnr"/>
+	<xs:element name="VORNAME" type="alphanumerisch25u"/>
+	<xs:element name="VOR_D" type="alphanumerisch25u"/>
+	<xs:element name="WERBUNGSKOSTEN">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="KZ718" minOccurs="0"/>
+				<xs:element ref="KZ916" minOccurs="0"/>
+				<xs:element ref="KZ717" minOccurs="0"/>
+				<xs:element ref="KZ158" minOccurs="0"/>
+				<xs:element ref="KZ274" minOccurs="0"/>
+				<xs:element ref="BERUF" minOccurs="0"/>
+				<xs:element ref="KZ169" minOccurs="0"/>
+				<xs:element ref="KZ719" minOccurs="0"/>
+				<xs:element ref="KZ720" minOccurs="0"/>
+				<xs:element ref="KZ721" minOccurs="0"/>
+				<xs:element ref="KZ722" minOccurs="0"/>
+				<xs:element ref="KZ300" minOccurs="0"/>
+				<xs:element ref="KZ723" minOccurs="0"/>
+				<xs:element ref="KZ159" minOccurs="0"/>
+				<xs:element ref="KZ724" minOccurs="0"/>
+				<xs:element ref="WKBERUF1" minOccurs="0"/>
+				<xs:element ref="WKZRVON1" minOccurs="0"/>
+				<xs:element ref="WKZRBIS1" minOccurs="0"/>
+				<xs:element ref="KZ437" minOccurs="0"/>
+				<xs:element ref="WKBERUF2" minOccurs="0"/>
+				<xs:element ref="WKZRVON2" minOccurs="0"/>
+				<xs:element ref="WKZRBIS2" minOccurs="0"/>
+				<xs:element ref="KZ438" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="WK1_L1">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="WK2_L1">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="WKBERUF1">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="A"/>
+				<xs:enumeration value="B"/>
+				<xs:enumeration value="F"/>
+				<xs:enumeration value="J"/>
+				<xs:enumeration value="M"/>
+				<xs:enumeration value="FO"/>
+				<xs:enumeration value="FM"/>
+				<xs:enumeration value="HA"/>
+				<xs:enumeration value="HE"/>
+				<xs:enumeration value="V"/>
+				<xs:enumeration value="P"/>
+				<xs:enumeration value="E"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="WKBERUF2">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="A"/>
+				<xs:enumeration value="B"/>
+				<xs:enumeration value="F"/>
+				<xs:enumeration value="J"/>
+				<xs:enumeration value="M"/>
+				<xs:enumeration value="FO"/>
+				<xs:enumeration value="FM"/>
+				<xs:enumeration value="HA"/>
+				<xs:enumeration value="HE"/>
+				<xs:enumeration value="V"/>
+				<xs:enumeration value="P"/>
+				<xs:enumeration value="E"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="WKZRBIS1">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:gMonthDay">
+					<xs:attribute name="type" type="monattagtype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="WKZRBIS2">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:gMonthDay">
+					<xs:attribute name="type" type="monattagtype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="WKZRVON1">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:gMonthDay">
+					<xs:attribute name="type" type="monattagtype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="WKZRVON2">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:gMonthDay">
+					<xs:attribute name="type" type="monattagtype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="WS_AUSAG" type="wahl"/>
+	<xs:element name="WS_AUSL" type="wahl"/>
+	<xs:element name="WS_INL" type="wahl"/>
+	<xs:element name="WS_KIND">
+		<xs:simpleType>
+			<xs:union memberTypes="laender oesterreich"/>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ZEHN1_D" type="wahl"/>
+	<xs:element name="ZEHN2_D" type="wahl"/>
+	<xs:element name="ZR" type="xs:gYear"/>
+	<xs:element name="ZUS1_D" type="wahl"/>
+	<xs:element name="ZUS2_D" type="wahl"/>
+</xs:schema>

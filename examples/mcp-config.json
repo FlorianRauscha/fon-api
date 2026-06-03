@@ -1,0 +1,37 @@
+{
+  "_comment": "Drop-in MCP server config for `fon-api-mcp`. Works with Claude Code, Cursor, Continue, and any MCP-compatible client. Copy the `mcpServers` block into your client's config.",
+  "_paths": {
+    "ClaudeCode": "~/Library/Application Support/Claude/claude_desktop_config.json (macOS) — or run `claude mcp add fon-api -- npx fon-api-mcp`",
+    "Cursor": "~/.cursor/mcp.json (project-level) or ~/Library/Application Support/Cursor/User/mcp.json (user-level)",
+    "Continue": "~/.continue/config.yaml — see Continue docs for MCP wiring"
+  },
+  "mcpServers": {
+    "fon-api": {
+      "command": "npx",
+      "args": ["fon-api-mcp"],
+      "env": {
+        "FON_TID": "1000103u3032",
+        "FON_BENID": "webserv99",
+        "FON_PIN": "webserv99",
+        "FON_HERSTELLERID": "REPLACE_WITH_YOUR_REGISTERED_HERSTELLER_ID"
+      }
+    }
+  },
+  "_credentials": "The four FON_* env vars above use BMF's published test credentials (tid=1000103u3032, benid=webserv99, pin=webserv99). They give read-only access to the FinanzOnline test environment. The Hersteller-ID must be registered with BMF (bmf-softwarehersteller@bmf.gv.at) — production submissions and real abfrage queries fail without one. See README.md `## Authentication` for details.",
+  "_tools_advertised": [
+    "list_arts — enumerate the 36 BMF upload + 4 abfrage art codes plus typed-builder versions",
+    "describe_art — return a Draft-7 JSON Schema describing the body shape for a given art × version",
+    "build_xml — render a typed JSON body into BMF-conformant XML (Zod-validated)",
+    "validate_xml — round-trip an XML payload through the bundled BMF XSD (libxml2)",
+    "abfrage — query Lohnzettel / Sonderausgaben / Leitungsrechte / Hochwasser data already submitted to BMF",
+    "upload — submit an art-discriminated XML payload via the BMF fileupload service"
+  ],
+  "_recommended_agent_workflow": [
+    "1. list_arts — see what's typed and at which versions",
+    "2. describe_art { art: 'U30', version: '07_2026' } — get the body's JSON Schema",
+    "3. Construct a body matching the schema",
+    "4. build_xml { art: 'U30', version: '07_2026', body } — get XML",
+    "5. validate_xml { art: 'U30', version: '07_2026', xml } — local XSD round-trip",
+    "6. upload { art: 'U30', uebermittlung: 'T', data: xml } — file (Test mode)"
+  ]
+}

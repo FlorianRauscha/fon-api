@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Cbc_Response xmlns="https://finanzonline.bmf.gv.at/fon/ws/cbcResponse" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Info_Daten>
+		<Fastnr_Fon_Tn>123456789</Fastnr_Fon_Tn>
+		<Fastnr_Org>987654321</Fastnr_Org>
+	</Info_Daten>
+	<MessageSpec>
+		<MessageRefId>123456789AT2016000001</MessageRefId>
+		<EinbringungsTimestamp>2017-05-10T12:41:03.822626</EinbringungsTimestamp>
+		<Art>VPDGD</Art>
+		<Uebermittlung>T</Uebermittlung>
+		<Info>TWOK</Info>
+	</MessageSpec>
+	<Error>
+		<Code>1</Code>
+		<Text>Fehlertext 1</Text>
+	</Error>
+	<Error>
+		<Code>2</Code>
+		<Text>Fehlertext 2</Text>
+		<Data>Data</Data>
+	</Error>
+</Cbc_Response>

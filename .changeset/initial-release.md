@@ -1,0 +1,32 @@
+---
+"fon-api": minor
+---
+
+Initial public release of `fon-api`, a TypeScript SDK for the Austrian FinanzOnline (BMF) SOAP web services. ESM-first, no native deps, Node ≥20. **22 art codes across 27 versioned typed-builder modules; 421 unit + XSD-conformance tests pass** — every typed builder's output validates against the vendored BMF XSDs via libxml2 (incl. optional-field paths), except the two upstream XSDs libxml2 cannot compile (`BET`, `TVW`), which are runtime-validated with Zod.
+
+**Transport (`fon-api`, `fon-api/core`, `fon-api/abfrage`, `fon-api/upload`)**
+
+- `createClient({ tid, benid, pin, herstellerid, env })` — session-cached login, Abfrage-Datenübermittlung query, generic art-discriminated `fileupload`.
+- 8-state Returncode union and a `parseProtocol`-driven `OK | NOK | TWOK` response shape covering both observed BMF protocol variants (per-art `<{Art}UebermittlungError>` and CbC-style plain `<Error>`).
+- `MaintenanceError` thrown automatically on the BMF `/wartung/` page; `SessionExpiredError`, `InvalidCredentialsError`, `NotAuthorizedError` typed.
+- `TEST_CREDENTIALS` exporting BMF's published `tid=1000103u3032 / benid=webserv99 / pin=webserv99` for read-only smoke testing.
+
+**Typed art-bodies (22 art codes / 27 modules)**
+
+- **U30** (USt-Voranmeldung) — `01_2022` (valid through 06/2026) and `07_2026` (from 07/2026 onward).
+- **L1** (Arbeitnehmerveranlagung) — `2022`, `2023`, `2024`, `2025`, each with all 6 inner sections fully typed, including the recursive AUSSERGEWOEHNLICHE_BELASTUNGEN tree (1..20 children, 12-month Familienbeihilfe grid) and year-specific element ordering. Section-union escape hatch `{ rawInner } | TypedSection` at every nesting level.
+- **KA1** (Kapitalertragsteuer-Anmeldung) — `ab_2016` and `ab_2022`.
+- **U13/ZM** (Zusammenfassende Meldung), **KOM** (Kommunalsteuer), **KOMU** (Kommunalsteuer-Bemessungsgrundlage), **NOVA** (Normverbrauchsabgabe), **FVAN** (Vollmachten), **SB** / **SBS** / **SBZ** (Selbstbemessung family), **RZ** (Registrierkasse), **UEB** (Umgründung/Übertragung), **DIGI** (Digitalsteuer), **STAB** (Stabilitätsabgabe), **BET** (Beteiligte einer Personengesellschaft), **VAT** (EU VAT-Refund Antrag), **VATAB** (VAT-Refund Abschluss, 651-entry NACE Rev. 2 list), **DUE** (Depotübertragung §§273T/274T/275T/274A KEStG, 4-way DEPOTINHABER union), **TVW** (Teamverwaltung), **SOER** (namespaced Sonstige-Erklärungen envelope: E108c/KR1/ENAV1/KOH1/WA1/ELA1/EGA1), **VPDGD** (Verrechnungspreise / Country-by-Country v2.0 national wrapper, OECD `<CBC_OECD>` payload passthrough).
+- **JAHR_ERKL** Prüfungen — Gewinnfreibetrag E1a tiered formula encoded for 2023, 2024 (the 30 000 → 33 000 threshold-change year) and 2025 (typed builder pending).
+
+**Abfrage-Datenübermittlung** — all 7 BMF content types: `LOHNZETTEL`, `SONDERAUSGABEN`, `LEITUNGSRECHTE`, `OEKOSONDERAUSGABENPAUSCHALE`, `HOCHWASSER`, `AUSSERORDENTLICHEGUTSCHRIFT`, `PAUSCHALEREISEAUFWANDSENTSCHAEDIGUNGEN`.
+
+**CLI (`fon-api` binary)** — `arts` (with `--describe`), `describe`, `build`, `validate` (xmllint against the bundled XSD, no creds), `pipeline` (build → validate → optional submit), `abfrage`, `submit`, `login`, `logout`. Credentials from `FON_TID`/`FON_BENID`/`FON_PIN`/`FON_HERSTELLERID`; defaults to Test (`uebermittlung=T`).
+
+**MCP server (`fon-api-mcp` binary)** — stdio JSON-RPC exposing `list_arts`, `describe_art`, `build_xml`, `validate_xml`, `pipeline`, `abfrage`, `upload` for LLM-agent use. `describe_art` returns Draft-7 JSON Schema per art×version. Credentials read from the server environment, never accepted as tool arguments. Programmatic embed via `import { createMcpServer } from 'fon-api/mcp'`.
+
+**Validation rules engine (`fon-api/validation`)** — `defineRule`, `runRules`, `hasErrors`, a `RuleContext` over Kennzahl lookups, and `computeStaffel(base, tiers)` for the cumulative-tiered Gewinnfreibetrag math.
+
+**Yearly-update workflow** — `schemas/manifest.json` registry of XSD URLs + sha256 + fetch-timestamp; idempotent `scripts/update-schemas.ts` re-fetcher; weekly GitHub Action opening a PR when any pinned hash drifts.
+
+**Build / CI** — ESM + `.d.ts` via tsup, 30 subpath exports; CI runs typecheck + biome + vitest + tsup (libxml2-utils for XSD-conformance tests); Changesets-driven release with npm provenance.

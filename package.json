@@ -1,0 +1,211 @@
+{
+  "name": "fon-api",
+  "version": "0.0.0",
+  "description": "TypeScript SDK for the Austrian FinanzOnline (BMF) SOAP web services — session, abfrage-datenuebermittlung, and unified fileupload submission with per-year typed payloads.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Florian Rauscha",
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "dist",
+    "schemas",
+    "README.md",
+    "LICENSE"
+  ],
+  "bin": {
+    "fon-api": "./dist/cli/index.js",
+    "fon-api-mcp": "./dist/mcp/index.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./core": {
+      "types": "./dist/core/index.d.ts",
+      "default": "./dist/core/index.js"
+    },
+    "./abfrage": {
+      "types": "./dist/abfrage/index.d.ts",
+      "default": "./dist/abfrage/index.js"
+    },
+    "./upload": {
+      "types": "./dist/upload/index.d.ts",
+      "default": "./dist/upload/index.js"
+    },
+    "./u30/01_2022": {
+      "types": "./dist/u30/01_2022/index.d.ts",
+      "default": "./dist/u30/01_2022/index.js"
+    },
+    "./u30/07_2026": {
+      "types": "./dist/u30/07_2026/index.d.ts",
+      "default": "./dist/u30/07_2026/index.js"
+    },
+    "./validation": {
+      "types": "./dist/validation/index.d.ts",
+      "default": "./dist/validation/index.js"
+    },
+    "./jahr_erkl/2024": {
+      "types": "./dist/jahr_erkl/2024/index.d.ts",
+      "default": "./dist/jahr_erkl/2024/index.js"
+    },
+    "./jahr_erkl/2025": {
+      "types": "./dist/jahr_erkl/2025/index.d.ts",
+      "default": "./dist/jahr_erkl/2025/index.js"
+    },
+    "./jahr_erkl/2023": {
+      "types": "./dist/jahr_erkl/2023/index.d.ts",
+      "default": "./dist/jahr_erkl/2023/index.js"
+    },
+    "./l1/2022": {
+      "types": "./dist/l1/2022/index.d.ts",
+      "default": "./dist/l1/2022/index.js"
+    },
+    "./l1/2023": {
+      "types": "./dist/l1/2023/index.d.ts",
+      "default": "./dist/l1/2023/index.js"
+    },
+    "./l1/2024": {
+      "types": "./dist/l1/2024/index.d.ts",
+      "default": "./dist/l1/2024/index.js"
+    },
+    "./l1/2025": {
+      "types": "./dist/l1/2025/index.d.ts",
+      "default": "./dist/l1/2025/index.js"
+    },
+    "./ka1/ab_2016": {
+      "types": "./dist/ka1/ab_2016/index.d.ts",
+      "default": "./dist/ka1/ab_2016/index.js"
+    },
+    "./ka1/ab_2022": {
+      "types": "./dist/ka1/ab_2022/index.d.ts",
+      "default": "./dist/ka1/ab_2022/index.js"
+    },
+    "./zm/current": {
+      "types": "./dist/zm/current/index.d.ts",
+      "default": "./dist/zm/current/index.js"
+    },
+    "./kom/current": {
+      "types": "./dist/kom/current/index.d.ts",
+      "default": "./dist/kom/current/index.js"
+    },
+    "./nova/current": {
+      "types": "./dist/nova/current/index.d.ts",
+      "default": "./dist/nova/current/index.js"
+    },
+    "./fvan/current": {
+      "types": "./dist/fvan/current/index.d.ts",
+      "default": "./dist/fvan/current/index.js"
+    },
+    "./sb/current": {
+      "types": "./dist/sb/current/index.d.ts",
+      "default": "./dist/sb/current/index.js"
+    },
+    "./sbs/current": {
+      "types": "./dist/sbs/current/index.d.ts",
+      "default": "./dist/sbs/current/index.js"
+    },
+    "./sbz/current": {
+      "types": "./dist/sbz/current/index.d.ts",
+      "default": "./dist/sbz/current/index.js"
+    },
+    "./rz/current": {
+      "types": "./dist/rz/current/index.d.ts",
+      "default": "./dist/rz/current/index.js"
+    },
+    "./ueb/current": {
+      "types": "./dist/ueb/current/index.d.ts",
+      "default": "./dist/ueb/current/index.js"
+    },
+    "./digi/current": {
+      "types": "./dist/digi/current/index.d.ts",
+      "default": "./dist/digi/current/index.js"
+    },
+    "./stab/current": {
+      "types": "./dist/stab/current/index.d.ts",
+      "default": "./dist/stab/current/index.js"
+    },
+    "./bet/current": {
+      "types": "./dist/bet/current/index.d.ts",
+      "default": "./dist/bet/current/index.js"
+    },
+    "./vat/current": {
+      "types": "./dist/vat/current/index.d.ts",
+      "default": "./dist/vat/current/index.js"
+    },
+    "./due/current": {
+      "types": "./dist/due/current/index.d.ts",
+      "default": "./dist/due/current/index.js"
+    },
+    "./vatab/current": {
+      "types": "./dist/vatab/current/index.d.ts",
+      "default": "./dist/vatab/current/index.js"
+    },
+    "./komu/current": {
+      "types": "./dist/komu/current/index.d.ts",
+      "default": "./dist/komu/current/index.js"
+    },
+    "./tvw/current": {
+      "types": "./dist/tvw/current/index.d.ts",
+      "default": "./dist/tvw/current/index.js"
+    },
+    "./soer/current": {
+      "types": "./dist/soer/current/index.d.ts",
+      "default": "./dist/soer/current/index.js"
+    },
+    "./vpdgd/v2_0": {
+      "types": "./dist/vpdgd/v2_0/index.d.ts",
+      "default": "./dist/vpdgd/v2_0/index.js"
+    },
+    "./mcp": {
+      "types": "./dist/mcp/server.d.ts",
+      "default": "./dist/mcp/server.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check src test",
+    "format": "biome format --write src test",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "FON_E2E=1 vitest run test/e2e",
+    "update-schemas": "tsx scripts/update-schemas.ts",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "changeset publish",
+    "prepublishOnly": "npm run typecheck && npm run test && npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "fast-xml-parser": "^4.5.0",
+    "zod": "^3.23.8",
+    "zod-to-json-schema": "^3.25.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@changesets/cli": "^2.27.10",
+    "@types/node": "^22.10.0",
+    "tsup": "^8.3.5",
+    "tsx": "^4.21.0",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "keywords": [
+    "finanzonline",
+    "fon",
+    "bmf",
+    "austria",
+    "tax",
+    "soap",
+    "u30",
+    "jahreserklaerung",
+    "arbeitnehmerveranlagung"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/florianrauscha/fon-api.git"
+  }
+}

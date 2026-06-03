@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Übertragung innerhalb der Finanzverwaltung - Stand: 19.06.2023 -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:simpleType name="datumtype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="datum"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="datum">
+		<xs:list itemType="xs:date"/>
+	</xs:simpleType>
+	<xs:simpleType name="jahr">
+		<xs:list itemType="xs:gYear"/>
+	</xs:simpleType>
+	<xs:simpleType name="kztype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="kz"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="kz">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0.01"/>
+			<xs:maxInclusive value="9999999999.99"/>
+			<xs:totalDigits value="12"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="kzvorz">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="-9999999999.99"/>
+			<xs:maxInclusive value="9999999999.99"/>
+			<xs:totalDigits value="12"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="jahrmonattype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="jahrmonat"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="jahrmonattagtype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="datum"/>
+			<xs:enumeration value="jahrmonat"/>
+			<xs:enumeration value="jahr"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="uhrzeittype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="uhrzeit"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="AA_WEG">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="000"/>
+				<xs:enumeration value="007"/>
+				<xs:enumeration value="011"/>
+				<xs:enumeration value="012"/>
+				<xs:enumeration value="013"/>
+				<xs:enumeration value="014"/>
+				<xs:enumeration value="015"/>
+				<xs:enumeration value="016"/>
+				<xs:enumeration value="018"/>
+				<xs:enumeration value="021"/>
+				<xs:enumeration value="024"/>
+				<xs:enumeration value="026"/>
+				<xs:enumeration value="027"/>
+				<xs:enumeration value="028"/>
+				<xs:enumeration value="030"/>
+				<xs:enumeration value="031"/>
+				<xs:enumeration value="034"/>
+				<xs:enumeration value="040"/>
+				<xs:enumeration value="045"/>
+				<xs:enumeration value="047"/>
+				<xs:enumeration value="057"/>
+				<xs:enumeration value="077"/>
+				<xs:enumeration value="113"/>
+				<xs:enumeration value="114"/>
+				<xs:enumeration value="115"/>
+				<xs:enumeration value="116"/>
+				<xs:enumeration value="122"/>
+				<xs:enumeration value="123"/>
+				<xs:enumeration value="124"/>
+				<xs:enumeration value="125"/>
+				<xs:enumeration value="126"/>
+				<xs:enumeration value="163"/>
+				<xs:enumeration value="164"/>
+				<xs:enumeration value="166"/>
+				<xs:enumeration value="177"/>
+				<xs:enumeration value="178"/>
+				<xs:enumeration value="179"/>
+				<xs:enumeration value="200"/>
+				<xs:enumeration value="204"/>
+				<xs:enumeration value="205"/>
+				<xs:enumeration value="400"/>
+				<xs:enumeration value="401"/>
+				<xs:enumeration value="405"/>
+				<xs:enumeration value="406"/>
+				<xs:enumeration value="443"/>
+				<xs:enumeration value="444"/>
+				<xs:enumeration value="445"/>
+				<xs:enumeration value="446"/>
+				<xs:enumeration value="447"/>
+				<xs:enumeration value="448"/>
+				<xs:enumeration value="449"/>
+				<xs:enumeration value="450"/>
+				<xs:enumeration value="451"/>
+				<xs:enumeration value="452"/>
+				<xs:enumeration value="453"/>
+				<xs:enumeration value="454"/>
+				<xs:enumeration value="455"/>
+				<xs:enumeration value="456"/>
+				<xs:enumeration value="460"/>
+				<xs:enumeration value="461"/>
+				<xs:enumeration value="462"/>
+				<xs:enumeration value="463"/>
+				<xs:enumeration value="465"/>
+				<xs:enumeration value="466"/>
+				<xs:enumeration value="467"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="AA_ZU">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="000"/>
+				<xs:enumeration value="007"/>
+				<xs:enumeration value="011"/>
+				<xs:enumeration value="012"/>
+				<xs:enumeration value="013"/>
+				<xs:enumeration value="014"/>
+				<xs:enumeration value="015"/>
+				<xs:enumeration value="016"/>
+				<xs:enumeration value="018"/>
+				<xs:enumeration value="021"/>
+				<xs:enumeration value="024"/>
+				<xs:enumeration value="026"/>
+				<xs:enumeration value="027"/>
+				<xs:enumeration value="028"/>
+				<xs:enumeration value="030"/>
+				<xs:enumeration value="031"/>
+				<xs:enumeration value="034"/>
+				<xs:enumeration value="040"/>
+				<xs:enumeration value="045"/>
+				<xs:enumeration value="047"/>
+				<xs:enumeration value="057"/>
+				<xs:enumeration value="077"/>
+				<xs:enumeration value="113"/>
+				<xs:enumeration value="114"/>
+				<xs:enumeration value="115"/>
+				<xs:enumeration value="116"/>
+				<xs:enumeration value="122"/>
+				<xs:enumeration value="123"/>
+				<xs:enumeration value="124"/>
+				<xs:enumeration value="125"/>
+				<xs:enumeration value="126"/>
+				<xs:enumeration value="163"/>
+				<xs:enumeration value="164"/>
+				<xs:enumeration value="166"/>
+				<xs:enumeration value="177"/>
+				<xs:enumeration value="178"/>
+				<xs:enumeration value="179"/>
+				<xs:enumeration value="200"/>
+				<xs:enumeration value="204"/>
+				<xs:enumeration value="205"/>
+				<xs:enumeration value="400"/>
+				<xs:enumeration value="401"/>
+				<xs:enumeration value="405"/>
+				<xs:enumeration value="406"/>
+				<xs:enumeration value="443"/>
+				<xs:enumeration value="444"/>
+				<xs:enumeration value="445"/>
+				<xs:enumeration value="446"/>
+				<xs:enumeration value="447"/>
+				<xs:enumeration value="448"/>
+				<xs:enumeration value="449"/>
+				<xs:enumeration value="450"/>
+				<xs:enumeration value="451"/>
+				<xs:enumeration value="452"/>
+				<xs:enumeration value="453"/>
+				<xs:enumeration value="454"/>
+				<xs:enumeration value="455"/>
+				<xs:enumeration value="456"/>
+				<xs:enumeration value="460"/>
+				<xs:enumeration value="461"/>
+				<xs:enumeration value="462"/>
+				<xs:enumeration value="463"/>
+				<xs:enumeration value="465"/>
+				<xs:enumeration value="466"/>
+				<xs:enumeration value="467"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ALLGEMEINE_DATEN">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="SATZNR"/>
+				<xs:element ref="ANBRINGEN"/>
+				<xs:element ref="FASTNR"/>
+				<xs:element ref="FASTNR_ZU"/>
+				<xs:element ref="KUNDENINFO" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ANBRINGEN">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="UEB"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ANZAHL_ERKLAERUNGEN">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+				<xs:maxInclusive value="9999"/>
+				<xs:minInclusive value="1"/>
+				<xs:totalDigits value="4"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ART_IDENTIFIKATIONSBEGRIFF">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="FASTNR"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="BETRAG_UEB">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BETRAG_WEG">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kzvorz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BETRAG_ZU">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="kzvorz">
+					<xs:attribute name="type" type="kztype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DATUM_ERSTELLUNG">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:date">
+					<xs:attribute name="type" type="datumtype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ERKLAERUNG">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ALLGEMEINE_DATEN"/>
+				<xs:element ref="WEGBUCHUNG" minOccurs="0" maxOccurs="7"/>
+				<xs:element ref="UEBERTRAGENDER_BETRAG" minOccurs="0"/>
+				<xs:element ref="ZUBUCHUNG" minOccurs="0" maxOccurs="7"/>
+			</xs:sequence>
+			<xs:attribute name="art" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ERKLAERUNGS_UEBERMITTLUNG">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="INFO_DATEN"/>
+				<xs:element ref="ERKLAERUNG" maxOccurs="9999"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="FASTNR">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+				<xs:maxInclusive value="989999999"/>
+				<xs:minInclusive value="010000010"/>
+				<xs:pattern value="\d{9}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="FASTNR_ZU">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+				<xs:maxInclusive value="989999999"/>
+				<xs:minInclusive value="010000010"/>
+				<xs:pattern value="\d{9}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="IDENTIFIKATIONSBEGRIFF">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+				<xs:maxInclusive value="989999999"/>
+				<xs:minInclusive value="010000010"/>
+				<xs:pattern value="\d{9}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="INFO_DATEN">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ART_IDENTIFIKATIONSBEGRIFF"/>
+				<xs:element ref="IDENTIFIKATIONSBEGRIFF"/>
+				<xs:element ref="PAKET_NR"/>
+				<xs:element ref="DATUM_ERSTELLUNG"/>
+				<xs:element ref="UHRZEIT_ERSTELLUNG"/>
+				<xs:element ref="ANZAHL_ERKLAERUNGEN"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KUNDENINFO">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="50"/>
+				<xs:minLength value="0"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="PAKET_NR">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+				<xs:maxInclusive value="999999999"/>
+				<xs:minInclusive value="1"/>
+				<xs:totalDigits value="9"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="SATZNR">
+		<xs:simpleType>
+			<xs:restriction base="xs:positiveInteger">
+				<xs:maxInclusive value="999999999"/>
+				<xs:minInclusive value="1"/>
+				<xs:totalDigits value="9"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="UEBERTRAGENDER_BETRAG">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="BETRAG_UEB"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="UHRZEIT_ERSTELLUNG">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:time">
+					<xs:attribute name="type" type="uhrzeittype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="WEGBUCHUNG">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="AA_WEG"/>
+				<xs:element ref="ZRVON_WEG"/>
+				<xs:element ref="ZRBIS_WEG"/>
+				<xs:element ref="BETRAG_WEG"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ZRBIS_WEG">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="type" type="jahrmonattagtype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ZRBIS_ZU">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="type" type="jahrmonattagtype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ZRVON_WEG">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="type" type="jahrmonattagtype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ZRVON_ZU">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="type" type="jahrmonattagtype" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ZUBUCHUNG">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="AA_ZU"/>
+				<xs:element ref="ZRVON_ZU"/>
+				<xs:element ref="ZRBIS_ZU"/>
+				<xs:element ref="BETRAG_ZU"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
