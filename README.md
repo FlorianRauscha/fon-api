@@ -2,7 +2,7 @@
 
 TypeScript SDK for the Austrian FinanzOnline (BMF) SOAP web services. Per-year typed payloads, XSD-conformant XML, validation rules engine, and a manifest-driven schema-update workflow.
 
-> **Status: pre-alpha.** Not yet published to npm. 27 typed builder modules across 22 art codes (incl. L1 2022–2025 and U30/KA1 multi-version) plus a `fon-api` CLI and a `fon-api-mcp` MCP server, 421 unit + XSD-conformance tests pass — generated XML validates against the official BMF XSDs via libxml2 wherever the upstream XSD is well-formed. Live SOAP round-trip against `finanzonline.bmf.gv.at` requires a registered Hersteller-ID — see [Authentication](#authentication).
+> **Status: early release — published on [npm](https://www.npmjs.com/package/fon-api) as `fon-api@0.1.0`.** 27 typed builder modules across 22 art codes (incl. L1 2022–2025 and U30/KA1 multi-version) plus a `fon-api` CLI and a `fon-api-mcp` MCP server, 421 unit + XSD-conformance tests pass — generated XML validates against the official BMF XSDs via libxml2 wherever the upstream XSD is well-formed. Live SOAP round-trip against `finanzonline.bmf.gv.at` requires a registered Hersteller-ID — see [Authentication](#authentication).
 
 ---
 
