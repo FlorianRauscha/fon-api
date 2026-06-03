@@ -1,5 +1,11 @@
 # fon-api
 
+## 0.1.1
+
+### Patch Changes
+
+- docs: README "Status" badge now reflects the published 0.1.0 release and links to the npm package. Documentation only — no API or runtime behavior changes.
+
 ## 0.1.0
 
 ### Minor Changes
