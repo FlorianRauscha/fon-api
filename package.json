@@ -1,6 +1,6 @@
 {
   "name": "fon-api",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "TypeScript SDK for the Austrian FinanzOnline (BMF) SOAP web services — session, abfrage-datenuebermittlung, and unified fileupload submission with per-year typed payloads.",
   "type": "module",
   "license": "MIT",
