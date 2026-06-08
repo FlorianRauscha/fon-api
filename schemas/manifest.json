@@ -25,37 +25,37 @@
       "xsd": "https://www.bmf.gv.at/dam/jcr:d9ab0564-a281-4558-a3fc-99eee34134c3/BMF_XSD_Jahreserklaerungen_2019.xsd",
       "xml_sample": "https://www.bmf.gv.at/dam/jcr:04ccda49-2176-48ef-93ea-6b8096b2b394/BMF_XML_Jahreserklaerungen_2019.xml",
       "xsd_sha256": "72aebe96218a64a569c51d5a5e66434b95c8b0aebedf554aef706394c5538b57",
-      "fetched_at": "2026-04-29T09:24:17.279Z"
+      "fetched_at": "2026-06-08T07:41:01.858Z"
     },
     "2020": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:6b8de85e-7110-4335-be3c-d146c4392b5b/BMF_XSD_Jahreserklaerungen_2020.xsd",
       "xml_sample": "https://www.bmf.gv.at/dam/jcr:3aeff230-78a6-4bc9-a665-408c5da8e97e/BMF_XML_Jahreserklaerungen_2020.xml",
       "xsd_sha256": "63ab7cd4df8e3e441303448010315846e2ea921bb406d49d36344ad61bb4d530",
-      "fetched_at": "2026-04-29T09:24:17.675Z"
+      "fetched_at": "2026-06-08T07:41:02.915Z"
     },
     "2021": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:a87176d4-b358-4862-9c2a-e91c32e73694/BMF_XSD_Jahreserklaerungen_2021.xsd",
       "xml_sample": "https://www.bmf.gv.at/dam/jcr:6ca97d5a-b82e-4974-be65-1786899b56cb/BMF_XML_Jahreserklaerungen_2021.xml",
       "xsd_sha256": "f4c6c00e8a20fab6f52e0ea8574db2307c571c4da331159cbdf6e86546a991a7",
-      "fetched_at": "2026-04-29T09:24:17.724Z"
+      "fetched_at": "2026-06-08T07:41:04.851Z"
     },
     "2022": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:0f3c413b-65f5-4986-be37-5248749ac625/BMF_XSD_Jahreserklaerungen_2022.xsd",
       "xml_sample": "https://www.bmf.gv.at/dam/jcr:f3f9ff1b-5abc-44b6-ba7d-95157b9fd661/BMF_XML_Jahreserklaerungen_2022.xml",
       "xsd_sha256": "ec540b9ccd0284dc09b13b62facd87130ab7b53cbfab2ab4b1a51713638097c1",
-      "fetched_at": "2026-04-29T09:24:17.967Z"
+      "fetched_at": "2026-06-08T07:41:05.551Z"
     },
     "2023": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:0fa9dab7-e331-412f-94e5-83215b7c61e4/BMF_XSD_Jahreserklaerungen_2023.xsd",
       "xml_sample": "https://www.bmf.gv.at/dam/jcr:d44cd858-a239-4f02-b2f2-44a37cff385d/BMF_XML_Jahreserklaerungen_2023.xml",
       "xsd_sha256": "08d7a08bf6f0dca447d61199070015357307e01c22e46d111428dd50a7799c6e",
-      "fetched_at": "2026-04-29T09:24:18.016Z"
+      "fetched_at": "2026-06-08T07:41:07.125Z"
     },
     "2024": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:eeb2525a-3045-43b1-b624-a0a81df21b8e/BMF_XSD_Jahreserklaerungen_2024.xsd",
       "xml_sample": "https://www.bmf.gv.at/dam/jcr:473cf18f-f41c-4b26-8d08-164c9e1ce885/BMF_XML_Jahreserklaerungen_2024.xml",
       "xsd_sha256": "e082ed4064c29735dcc41dc18cc6a6d3759bf82f6d990ad2ae6bc22f33c4edd3",
-      "fetched_at": "2026-04-29T09:24:18.223Z"
+      "fetched_at": "2026-06-08T07:41:07.831Z"
     },
     "2025": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:7206213b-d350-4799-b630-48de1b2f82b4/BMF_XSD_Jahreserklaerungen_2025.xsd",
@@ -70,7 +70,7 @@
       "pruefung_gfb_e6a1": "https://www.bmf.gv.at/dam/jcr:1ef92e0a-8183-4b78-9125-396082099dbb/BMF_Pruefung_Gewinnfreibetrag_E6a1_Jahreserklaerung_2025.pdf",
       "dokumentenversion": "https://www.bmf.gv.at/dam/jcr:cd45a99f-9d7a-40e0-9c26-99aac9b9655b/BMF_Dokumentenversion_Jahreserklaerung_2025.pdf",
       "xsd_sha256": "18009dd10a05d40c95e98ad70437ca8abfd2c80a87e979d7cc013cec9db571ad",
-      "fetched_at": "2026-04-29T09:24:18.282Z"
+      "fetched_at": "2026-06-08T07:41:09.164Z"
     },
     "comment": "Unified Jahreserklärungen XSD per tax year — covers E1, E1a, E1a-K, E1b, E1c, E1kv, E11, K1, K1-B, K1-V, K1g, K10, K11, K12, K12a, K12a-G, K2, K2a, K2b, K2kv, U1, E6, E6a, E6a-1, E6b, E61, E6c, E7, L1ab, L1d, L1k, L1k-bF, L1i."
   },
@@ -79,28 +79,28 @@
       "xsd": "https://www.bmf.gv.at/dam/jcr:91b78662-424c-494a-8e72-5a74560296d0/BMF_XSD_Schema_Arbeitnehmerveranlagung_2021.xsd",
       "xsd_laender_kfz": "https://www.bmf.gv.at/dam/jcr:516d6bdc-585d-42b0-84fe-71c2c536f382/BMF_laender_kfz_2021.xsd",
       "xsd_sha256": "c2602b6a700d8db09871d7f180a90f3a04257f654d4f82a06d0485d841a96986",
-      "fetched_at": "2026-04-29T09:24:18.346Z",
+      "fetched_at": "2026-06-08T07:41:09.528Z",
       "xsd_laender_kfz_sha256": "a414ceeb07b7b55a10e286d1367b255cd4ffa71d043f7c5389e28e5d68091bf5"
     },
     "2022": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:784cdd4d-e538-4df0-a106-1b46a53a6ed1/BMF_XSD_Schema_Arbeitnehmerveranlagung_2022.xsd",
       "xsd_laender_kfz": "https://www.bmf.gv.at/dam/jcr:60120f7f-2679-426e-8294-e726d29238ef/BMF_laender_kfz_2022.xsd",
       "xsd_sha256": "0a87bee9371820eeff2ba6db6c9f206dacf71e7248b2d1a7d433e6212503f671",
-      "fetched_at": "2026-04-29T09:24:18.405Z",
+      "fetched_at": "2026-06-08T07:41:09.777Z",
       "xsd_laender_kfz_sha256": "a414ceeb07b7b55a10e286d1367b255cd4ffa71d043f7c5389e28e5d68091bf5"
     },
     "2023": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:d9d76729-a0c3-4639-a429-9896fe4d80ef/BMF_XSD_Schema_Arbeitnehmerveranlagung_2023.xsd",
       "xsd_laender_kfz": "https://www.bmf.gv.at/dam/jcr:20391121-c2be-49c1-9dc9-27039f206974/BMF_laender_kfz_2023.xsd",
       "xsd_sha256": "9543cec0ab77fa9b25df81e99193fcfe64a831d65bb98e9ab9f4fa4b0e1591d3",
-      "fetched_at": "2026-04-29T09:24:18.465Z",
+      "fetched_at": "2026-06-08T07:41:10.028Z",
       "xsd_laender_kfz_sha256": "a414ceeb07b7b55a10e286d1367b255cd4ffa71d043f7c5389e28e5d68091bf5"
     },
     "2024": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:2b483742-3726-4b40-93f9-fac621c6e48d/BMF_XSD_Schema_Arbeitnehmerveranlagung_2024.xsd",
       "xsd_laender_kfz": "https://www.bmf.gv.at/dam/jcr:86fef657-7bfd-4c00-8577-edce6df03f2e/BMF_laender_kfz_2024.xsd",
       "xsd_sha256": "48d01ef5e3e4ff4dd054a99374072b1d8751d46f3c8bf421a68478cd7f5b601e",
-      "fetched_at": "2026-04-29T09:24:18.523Z",
+      "fetched_at": "2026-06-08T07:41:10.279Z",
       "xsd_laender_kfz_sha256": "86759ae10954482e0fc85c2c7dc3181c476be5b99d06315998a3f72c70ac1eb1"
     },
     "2025": {
@@ -113,7 +113,7 @@
       "wertevorrat_berufsgruppe": "https://www.bmf.gv.at/dam/jcr:ba04fdb8-00eb-4c02-8525-2aa419800489/BMF_Wertevorrat_BERUFSGRUPPE_Arbeitnehmerveranlagung_2025.pdf",
       "dokumentenversion": "https://www.bmf.gv.at/dam/jcr:82cbfad6-7fdc-42f4-8344-41bb27e09e07/BMF_Dokumentenversion_Arbeitnehmerveranlagung_2025.pdf",
       "xsd_sha256": "519b478b474861c31765bb0e5b4d7c4d87ce39c3745678ab38c53b0fcba58b67",
-      "fetched_at": "2026-04-29T09:24:18.584Z",
+      "fetched_at": "2026-06-08T07:41:10.530Z",
       "xsd_laender_kfz_sha256": "86759ae10954482e0fc85c2c7dc3181c476be5b99d06315998a3f72c70ac1eb1"
     },
     "comment": "art=L1 — Arbeitnehmerveranlagung (employee tax assessment). Includes laender_kfz auxiliary XSD for country/vehicle codes."
@@ -125,14 +125,14 @@
       "valid_from": "2022-01-01",
       "valid_until": "2026-06-30",
       "xsd_sha256": "484bdff6e41ab80a18abe7331cc2720494dbf09d0438eaedd0a8db6be5124551",
-      "fetched_at": "2026-04-29T09:24:18.605Z"
+      "fetched_at": "2026-06-08T07:41:10.652Z"
     },
     "07_2026": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:2e90eb5d-ef76-48a8-922b-dbf62cc2f230/BMF_ERKLAERUNGS_UEBERMITTLUNG_U30_07_2026.xsd",
       "valid_from": "2026-07-01",
       "valid_until": null,
       "xsd_sha256": "e51a69c99568f2d9fbccf9271d6243d9880588561a30746303ad6c23d646f757",
-      "fetched_at": "2026-04-29T09:24:18.626Z"
+      "fetched_at": "2026-06-08T07:41:10.778Z"
     }
   },
   "ka1": {
@@ -142,14 +142,14 @@
       "valid_from": "2016-01-01",
       "valid_until": "2021-12-31",
       "xsd_sha256": "6ecc02d2a00e0d949fa40b9ceb71b19a28532177787ef551677f55a2e66c4e59",
-      "fetched_at": "2026-04-29T09:24:18.651Z"
+      "fetched_at": "2026-06-08T07:41:10.901Z"
     },
     "ab_2022": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:bdb29c19-9bb5-41ac-95bc-0eec4a2345c9/BMF_XSD_Schema_Kapitalertragsteuer_Anmeldung_KA1_ab_2022.xsd",
       "valid_from": "2022-01-01",
       "valid_until": null,
       "xsd_sha256": "f1380c47369b6a38b375e35a66ae0286d587a9200d1cfa2b3c3de88855103b94",
-      "fetched_at": "2026-04-29T09:24:18.672Z"
+      "fetched_at": "2026-06-08T07:41:11.030Z"
     }
   },
   "kom": {
@@ -157,7 +157,7 @@
     "current": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:f94147aa-f781-45bd-9647-a318c5ed2e81/BMF_XSD_Schema_KommSt1_KommSt2.xsd",
       "xsd_sha256": "55f75471e23d166a9fbe86b51c49eccbc105a876b1980949b54f1ff2a409a766",
-      "fetched_at": "2026-04-29T09:24:18.694Z"
+      "fetched_at": "2026-06-08T07:41:11.151Z"
     }
   },
   "komu": {
@@ -165,7 +165,7 @@
     "current": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:361e7310-e621-481e-9635-6cb4ec5d76ea/BMF_XSD_Schema_Kommunalsteuerbemessungsgrundlage.xsd",
       "xsd_sha256": "96f4a8a8320affe48579a6acfe5a0d01b8647373cf783fd2baf18723f35d11ac",
-      "fetched_at": "2026-04-29T09:24:18.715Z"
+      "fetched_at": "2026-06-08T07:41:11.277Z"
     }
   },
   "sb": {
@@ -173,7 +173,7 @@
     "current": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:b1fc9a4c-0d50-40a5-a457-72f37ef5fdd7/BMF_XSD_Schema_Buchung_SB.xsd",
       "xsd_sha256": "0e7ef1facb4860d48b55962044595bc9b99543eaf5e2cfde5ceee2e987e2350f",
-      "fetched_at": "2026-04-29T09:24:18.737Z"
+      "fetched_at": "2026-06-08T07:41:11.400Z"
     }
   },
   "sbs": {
@@ -181,7 +181,7 @@
     "current": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:e17b58ed-9a25-4b04-a3eb-0fbe61e51113/BMF_XSD_Schema_Berichtigung_Buchung_SB.xsd",
       "xsd_sha256": "bc6a3c8c096f84d636796bb05937647169a742205c1b4cec070db19b2f1a04cf",
-      "fetched_at": "2026-04-29T09:24:18.759Z"
+      "fetched_at": "2026-06-08T07:41:11.526Z"
     }
   },
   "sbz": {
@@ -189,7 +189,7 @@
     "current": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:b5ec78dd-74e8-43d9-944a-a2e5698817dc/BMF_XSD_Schema_Meldung_SB.xsd",
       "xsd_sha256": "54f28ff273e0609cb53958c6d9a6a8d5722ded5e69942ff3aac81938083c9550",
-      "fetched_at": "2026-04-29T09:24:18.783Z"
+      "fetched_at": "2026-06-08T07:41:11.649Z"
     }
   },
   "rz": {
@@ -197,7 +197,7 @@
     "current": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:20a81f66-4d70-4cb7-964b-78f0128bcece/BMF_XSD_Schema_Rueckzahlung.xsd",
       "xsd_sha256": "d224ed28b5202ec8dffb7942a31b21454157cc28388840b3db248897340de31d",
-      "fetched_at": "2026-04-29T09:24:18.805Z"
+      "fetched_at": "2026-06-08T07:41:11.775Z"
     }
   },
   "ueb": {
@@ -205,7 +205,7 @@
     "current": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:122367d2-98d5-44b8-b983-08b235cf7190/BMF_XSD_Schema_Uebertragung.xsd",
       "xsd_sha256": "991b279dc965016b7219ebba2f1c95ae9cf888a15c4647802e664af86928e9c0",
-      "fetched_at": "2026-04-29T09:24:18.828Z"
+      "fetched_at": "2026-06-08T07:41:11.896Z"
     }
   },
   "fvan": {
@@ -213,7 +213,7 @@
     "current": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:448cc916-da01-4c52-a156-64908eb65c2f/BMF_XSD_Schema_Fristverlaengerung.xsd",
       "xsd_sha256": "91ac79bbedef4cbe432f31f38323b72ddec56a05537a869192c8baf5fdfac0e9",
-      "fetched_at": "2026-04-29T09:24:18.850Z"
+      "fetched_at": "2026-06-08T07:41:12.022Z"
     }
   },
   "tvw": {
@@ -221,7 +221,7 @@
     "current": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:4201fc6a-864d-40c5-ba58-8439320847c5/BMF_XSD_Schema_Teamverwaltung.xsd",
       "xsd_sha256": "09ec838250a94ea5048270c78b989f5dc75b78e7f99199a505d874d9dc6564a9",
-      "fetched_at": "2026-04-29T09:24:18.871Z"
+      "fetched_at": "2026-06-08T07:41:12.143Z"
     }
   },
   "stab": {
@@ -231,7 +231,7 @@
       "valid_from": "2017-01-01",
       "valid_until": null,
       "xsd_sha256": "5bc202db5f6d3b057200cc1aad4cea6e8493be05b441541c600104f714742c62",
-      "fetched_at": "2026-04-29T09:24:18.895Z"
+      "fetched_at": "2026-06-08T07:41:12.270Z"
     }
   },
   "bet": {
@@ -239,7 +239,7 @@
     "current": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:b781639c-706a-4013-81e5-e6519876332b/BMF_XSD_Schema_Abfragen_Beteiligte.xsd",
       "xsd_sha256": "2b320b5c698259b003361938e3c4271d5dfb330f642122da032a630dae1585c6",
-      "fetched_at": "2026-04-29T09:24:18.916Z"
+      "fetched_at": "2026-06-08T07:41:12.393Z"
     }
   },
   "nova": {
@@ -247,7 +247,7 @@
     "current": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:10f43f13-2e4c-4440-bd6e-55a06b8b43a6/BMF_XSD_Schema_Normverbrauchsabgabe.xsd",
       "xsd_sha256": "5092484e7eb7da25f1aa88a8c38995f2cd1e9a26695d45fe6f6ccb31de1cf63b",
-      "fetched_at": "2026-04-29T09:24:18.937Z"
+      "fetched_at": "2026-06-08T07:41:12.520Z"
     }
   },
   "digi": {
@@ -255,7 +255,7 @@
     "current": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:7303c558-a14b-4786-afb5-d9222d2fda5e/BMF_XSD_Schema_Digitalsteuer.xsd",
       "xsd_sha256": "13d947fff38aaa538e204cabf10bf31870471bdcb5d192f8fc7d55e1f4b0f0cb",
-      "fetched_at": "2026-04-29T09:24:18.959Z"
+      "fetched_at": "2026-06-08T07:41:12.641Z"
     }
   },
   "soer": {
@@ -267,7 +267,7 @@
       "protokoll_nok": "https://www.bmf.gv.at/dam/jcr:6c36213b-db4c-4449-8520-9c6ff11eeedf/SonstigeErklaerungen_NOK_Protokoll.xml",
       "protokoll_twok": "https://www.bmf.gv.at/dam/jcr:497fc4b0-b507-4d66-881d-214d4e945e7b/SonstigeErklaerungen_TWOK_Protokoll.xml",
       "xsd_sha256": "803f44a378a4c902dd4f88421452000d93a071efd49fea9c4e0941ea5aac16ed",
-      "fetched_at": "2026-04-29T09:24:18.982Z"
+      "fetched_at": "2026-06-08T07:41:12.791Z"
     }
   },
   "zm": {
@@ -275,7 +275,7 @@
     "current": {
       "xsd": "https://www.bmf.gv.at/dam/jcr:7ff03520-deca-4ef8-aa60-b8ff206bb581/BMF_XSD_Schema_Zusammenfassende_Meldung.xsd",
       "xsd_sha256": "b098e61f1be1b847cbf0e19981ec24ba50f4b1edeb87c8ecb089b1c975113bf3",
-      "fetched_at": "2026-04-29T09:24:19.004Z"
+      "fetched_at": "2026-06-08T07:41:12.912Z"
     }
   },
   "vat": {
@@ -285,7 +285,7 @@
       "xsd_abschluss": "https://www.bmf.gv.at/dam/jcr:6e54a7d9-5f3b-4ca7-8dd0-0c6e3e36b7fa/BMF_XSD_Schema_VAT_Antrag_Abschluss.XSD",
       "laenderpraeferenzen": "https://www.bmf.gv.at/dam/jcr:4db88a21-f0b0-450f-97a2-b1c4fc66eb61/BMF_Laenderpraeferenzen_Codes.zip",
       "xsd_antrag_sha256": "82fc810c5d2212ab8f018499d4ed6c93f5115187f8a8ce539293a67885e12a28",
-      "fetched_at": "2026-04-29T09:24:19.054Z",
+      "fetched_at": "2026-06-08T07:41:13.163Z",
       "xsd_abschluss_sha256": "31626ba24d1234913e2aaf4ba08708f158f03c8e32612114bd97e98b6f1cf35d"
     }
   },
